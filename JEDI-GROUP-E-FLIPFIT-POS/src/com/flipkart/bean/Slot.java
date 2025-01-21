@@ -1,9 +1,11 @@
 package com.flipkart.bean;
+
 public class Slot {
 	
-	private long slotID;
+	private Long slotID;
 	private String slotTimings ; // 24 hr format: Eg : "16:00". Will be start timing
 	private int price;
+	private Long centreId;
 	private WaitingList waitList;
 	//Waiting list to be added
 	

@@ -8,6 +8,16 @@ public class Booking {
     private Long bookingId;
     private Long customerId;
     private Long slotId;
+    private Date slotBookingDate;
+
+    public Date getSlotBookingDate() {
+        return slotBookingDate;
+    }
+
+    public void setSlotBookingDate(Date slotBookingDate) {
+        this.slotBookingDate = slotBookingDate;
+    }
+
     private Date bookingDate;
     private BookingStatusType bookingStatus;
 

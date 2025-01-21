@@ -1,22 +1,23 @@
 package com.flipkart.bean;
 
 public class Centre {
-	private int id;
+	private Long id;
 	private String name;
 	private String email;
 	private boolean is_approved;
 	private  String  location;
+	private Long gymOwnerId;
 
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	/**
@@ -66,5 +67,13 @@ public class Centre {
 	 */
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public Long getGymOwnerId() {
+		return gymOwnerId;
+	}
+
+	public void setGymOwnerId(Long gymOwnerId) {
+		this.gymOwnerId = gymOwnerId;
 	}
 }
