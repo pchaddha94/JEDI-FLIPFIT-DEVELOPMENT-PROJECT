@@ -1,10 +1,5 @@
-/**
- * 
- */
+package com.flipkart.bean;
 
-/**
- * 
- */
 public class Slot {
 	
 	private long slotID;

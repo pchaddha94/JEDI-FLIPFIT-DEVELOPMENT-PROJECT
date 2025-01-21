@@ -1,5 +1,7 @@
 package com.flipkart.bean;
 
+import com.flipkart.utils.BookingStatusType;
+
 import java.util.Date;
 
 public class Booking {
@@ -7,7 +9,7 @@ public class Booking {
     private Long customerId;
     private Long slotId;
     private Date bookingDate;
-    private Boolean bookingStatus;
+    private BookingStatusType bookingStatus;
 
     public Long getBookingId() {
         return bookingId;
@@ -41,11 +43,11 @@ public class Booking {
         this.bookingDate = bookingDate;
     }
 
-    public Boolean getBookingStatus() {
+    public BookingStatusType getBookingStatus() {
         return bookingStatus;
     }
 
-    public void setBookingStatus(Boolean bookingStatus) {
+    public void setBookingStatus(BookingStatusType bookingStatus) {
         this.bookingStatus = bookingStatus;
     }
 }

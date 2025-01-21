@@ -1,5 +1,6 @@
 package com.flipkart.bean;
 
+import com.flipkart.utils.PaymentStatusType;
 import com.flipkart.utils.PaymentType;
 
 public class Payment {
@@ -7,7 +8,7 @@ public class Payment {
     private Long bookingId;
     private PaymentType paymentType;
     private Long payerId;
-    private Boolean paymentStatus;
+    private PaymentStatusType paymentStatus;
 
     public Long getBookingId() {
         return bookingId;
@@ -41,12 +42,11 @@ public class Payment {
         this.paymentType = paymentType;
     }
 
-    public Boolean getPaymentStatus() {
+    public PaymentStatusType getPaymentStatus() {
         return paymentStatus;
     }
 
-    public void setPaymentStatus(Boolean paymentStatus) {
+    public void setPaymentStatus(PaymentStatusType paymentStatus) {
         this.paymentStatus = paymentStatus;
     }
-
 }

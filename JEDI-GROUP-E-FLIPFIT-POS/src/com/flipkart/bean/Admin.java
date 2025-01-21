@@ -2,23 +2,23 @@ package com.flipkart.bean;
 
 public class Admin {
 	
-	private long adminId;
+	private Long adminId;
 	private String adminName;
 	private String adminEmailAddress;
-	private int phone;
+	private String phone;
 	private String password;
 	
 	
 	/**
 	 * @return the adminId
 	 */
-	public long getAdminId() {
+	public Long getAdminId() {
 		return adminId;
 	}
 	/**
 	 * @param adminId the adminId to set
 	 */
-	public void setAdminId(long adminId) {
+	public void setAdminId(Long adminId) {
 		this.adminId = adminId;
 	}
 	/**
@@ -48,13 +48,13 @@ public class Admin {
 	/**
 	 * @return the phone
 	 */
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 	/**
 	 * @param phone the phone to set
 	 */
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	/**
