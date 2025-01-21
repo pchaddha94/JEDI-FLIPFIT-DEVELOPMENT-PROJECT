@@ -1,13 +1,19 @@
 package com.flipkart.bean;
-
 public class Slot {
 	
 	private long slotID;
 	private String slotTimings ; // 24 hr format: Eg : "16:00". Will be start timing
 	private int price;
+	private WaitingList waitList;
 	//Waiting list to be added
 	
 	
+	public WaitingList getWaitList() {
+		return waitList;
+	}
+	public void setWaitList(WaitingList waitList) {
+		this.waitList = waitList;
+	}
 	public long getSlotID() {
 		return slotID;
 	}
@@ -26,9 +32,5 @@ public class Slot {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
-	
-	
-	
 
 }
