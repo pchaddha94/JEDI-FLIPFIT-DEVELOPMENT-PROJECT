@@ -17,23 +17,23 @@ public void initializeWaitingList(long waitListId, long centreId, int slotId) {
 	System.out.println("initializeWaitingList() called: Waiting list initialized with ID: " + waitListId + ",Centre ID: " + centreId + ", Slot ID: " + slotId);
 }
 
-public boolean addCustomerToWaitlist(Customer customer) {
+public void addCustomerToWaitlist(Customer customer) {
 //add customer 
 	System.out.println("addCustomerToWaitlist() called: Customer " + customer.getCustomerName() + " added to the waiting list.");
-	return true;
+	return ;
 }
 
-public boolean serveNextCustomer(Customer customer) {
+public void serveNextCustomer(Customer customer) {
 
 //find next customer
 	System.out.println("serveNextCustomer() called: Customer " + customer.getCustomerName()+ " has been served.");
-	return true;
+	return ;
 }
 
-public boolean viewWaitingList() {
+public void viewWaitingList() {
 //view list
 	System.out.println("viewWaitingList() called: Current waiting list: " );
-	return true;
+	return ;
 }
 
 
