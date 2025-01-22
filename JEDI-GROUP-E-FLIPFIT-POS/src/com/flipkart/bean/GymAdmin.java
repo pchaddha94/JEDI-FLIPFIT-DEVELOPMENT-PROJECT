@@ -1,6 +1,6 @@
 package com.flipkart.bean;
 
-public class Admin {
+public class GymAdmin {
 	
 	private Long adminId;
 	private String adminName;

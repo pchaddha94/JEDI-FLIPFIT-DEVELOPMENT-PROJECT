@@ -1,6 +1,6 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.Booking;
+import com.flipkart.bean.BookSlot;
 import com.flipkart.bean.Slot;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class GymOwnerOperation {
         return true;
     }
 
-    public List<Booking> ViewBookings(Long centreID){
+    public List<BookSlot> ViewBookings(Long centreID){
 
         return null;
     }

@@ -1,16 +1,16 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.Admin;
+import com.flipkart.bean.GymAdmin;
 import com.flipkart.bean.*;
 
 import java.util.List;
 import java.util.ArrayList;
 
 public class AdminOperation {
-	Admin admin = new Admin();
+	GymAdmin admin = new GymAdmin();
 	
 	private List<GymOwner> pendinGymOwnerList = new ArrayList<>();
-    private List<Centre> pendinGymCentreList = new ArrayList<>();
+    private List<GymCenter> pendinGymCentreList = new ArrayList<>();
 	
 	public void createAdmin(long adminId, String adminName, String adminEmail, String adminPhone, String password)
 	{
@@ -39,7 +39,7 @@ public class AdminOperation {
 	
 	//TODO - task 2 (view)
 	
-	public List<Centre> viewPendingGymCentres(){
+	public List<GymCenter> viewPendingGymCentres(){
         pendinGymCentreList = new ArrayList<>(); // TODO -> get the list
         return pendinGymCentreList;
     }

@@ -5,7 +5,7 @@ public class WaitingList {
 	private long centreId;
 	private long waitListId;
 	private int slotId;
-	private Queue<Integer> waiting = new LinkedList<>();
+	private Queue<Long> waiting = new LinkedList<>();
 	public long getCentreId() {
 		return centreId;
 	}
@@ -24,10 +24,10 @@ public class WaitingList {
 	public void setSlotId(int slotId) {
 		this.slotId = slotId;
 	}
-	public Queue<Integer> getWaiting() {
+	public Queue<Long> getWaiting() {
 		return waiting;
 	}
-	public void setWaiting(Queue<Integer> waiting) {
+	public void setWaiting(Queue<Long> waiting) {
 		this.waiting = waiting;
 	}
 	

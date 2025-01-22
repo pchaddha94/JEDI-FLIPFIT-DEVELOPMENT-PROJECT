@@ -1,6 +1,6 @@
 package com.flipkart.bean;
 
-public class Centre {
+public class GymCenter {
 	private Long id;
 	private String name;
 	private String email;

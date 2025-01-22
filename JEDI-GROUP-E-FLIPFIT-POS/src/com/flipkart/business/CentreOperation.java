@@ -1,29 +1,29 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.Centre;
+import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CentreOperation {
-    public Centre getCentre(Long centreId) {
-        System.out.println("Getting centre with Centre Id: " + centreId);
-        // Find Centre with id as centreId
-        Centre centre = new Centre();
-        centre.setId(centreId);
+    public GymCenter getCentre(Long centerId) {
+        System.out.println("Getting centre with Centre Id: " + centerId);
+        // Find Center with id as centreId
+        GymCenter centre = new GymCenter();
+        centre.setId(centerId);
         centre.setName("John Doe");
         return centre;
     }
 
-    public Centre addCentre(Centre centre) {
+    public GymCenter addCentre(GymCenter centre) {
         System.out.println("Add centre");
-        //Add centre to Database
+        //Add center to Database
         return centre;
     }
 
     public Slot addSlot(Long centreId, Slot slot) {
-        //Add slot to the centre
+        //Add slot to the center
         System.out.println("Adding slot " + slot + " to Centre " + centreId);
         return slot;
     }
@@ -33,7 +33,7 @@ public class CentreOperation {
         return new ArrayList<Slot>();
     }
 
-    public Centre updateCentre(Long id, Centre centre) {
+    public GymCenter updateCentre(Long id, GymCenter centre) {
         System.out.println("Updating centre with Centre Id: " + centre.getId());
         return centre;
     }

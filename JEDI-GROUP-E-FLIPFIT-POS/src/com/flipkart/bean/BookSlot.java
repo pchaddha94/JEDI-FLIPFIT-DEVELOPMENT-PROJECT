@@ -4,7 +4,7 @@ import com.flipkart.utils.BookingStatusType;
 
 import java.util.Date;
 
-public class Booking {
+public class BookSlot {
     private Long bookingId;
     private Long customerId;
     private Long slotId;
