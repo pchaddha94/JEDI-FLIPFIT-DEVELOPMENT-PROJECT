@@ -1,6 +1,7 @@
 package com.flipkart.client;
 
 import com.flipkart.bean.GymCenter;
+import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slot;
 import com.flipkart.business.*;
 
@@ -14,6 +15,8 @@ import com.flipkart.utils.*;
 import java.util.Scanner; 
 
 public class GymOwnerMenu {
+	
+	private GymOwnerOperation gymOwnerOperations=new GymOwnerOperation();
 	Scanner scanner = new Scanner(System.in);
 	public boolean gymOwnerLogin(String userName, String password) {
 		System.out.println("Successfully logged in");
@@ -28,14 +31,19 @@ public class GymOwnerMenu {
 
         System.out.println("Enter your Email");
         String email = scanner.next();
+        
+        System.out.println("Enter your Phone");
+        String phone = scanner.next();
 
         System.out.println("Enter your PAN Number");
         String panNumber = scanner.next();
 
-        System.out.println("Enter your Card Number");
-        String cardNumber = scanner.next();
+        System.out.println("Enter your address");
+        String address = scanner.next();
 
         System.out.println("Register successful");
+        
+        GymOwner gymOwner=gymOwnerOperations.createGymOwner(0, userName, email, phone, panNumber, true, address);
     }
     public void gymOwnerClientMainPage(String gymOwnerId) {
     	while(true) {

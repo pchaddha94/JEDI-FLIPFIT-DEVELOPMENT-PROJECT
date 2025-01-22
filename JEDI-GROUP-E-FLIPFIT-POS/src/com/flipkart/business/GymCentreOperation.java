@@ -6,7 +6,7 @@ import com.flipkart.bean.Slot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CentreOperation {
+public class GymCentreOperation {
     public GymCenter getCentre(Long centerId) {
         System.out.println("Getting centre with Centre Id: " + centerId);
         // Find Center with id as centreId

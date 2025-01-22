@@ -7,8 +7,8 @@ public class GymOwner {
     private long ownerId;
     private String ownerName;
     private String ownerEmailAddress;
-    private int ownerPhone;
-    private int ownerPanNum;
+    private String ownerPhone;
+    private String ownerPanNum;
     private boolean isApproved;
     private String ownerAddress;
     private final UserRole userRole = UserRole.OWNER;
@@ -51,25 +51,25 @@ public class GymOwner {
     /**
      * @return the ownerPhone
      */
-    public int getOwnerPhone() {
+    public String getOwnerPhone() {
         return ownerPhone;
     }
     /**
      * @param ownerPhone the ownerPhone to set
      */
-    public void setOwnerPhone(int ownerPhone) {
+    public void setOwnerPhone(String ownerPhone) {
         this.ownerPhone = ownerPhone;
     }
     /**
      * @return the ownerGSTNum
      */
-    public int getOwnerPanNum() {
+    public String getOwnerPanNum() {
         return ownerPanNum;
     }
     /**
      * @param ownerGSTNum the ownerGSTNum to set
      */
-    public void setOwnerPanNum(int ownerPanNum) {
+    public void setOwnerPanNum(String ownerPanNum) {
         this.ownerPanNum = ownerPanNum;
     }
     /**

@@ -2,7 +2,7 @@ package com.flipkart.client;
 
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.Slot;
-import com.flipkart.business.CentreOperation;
+import com.flipkart.business.GymCentreOperation;
 import com.flipkart.business.CustomerOperations;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class GymCustomerMenu {
     private CustomerOperations customerOperations = new CustomerOperations();
-    private CentreOperation centreOperation = new CentreOperation();
+    private GymCentreOperation centreOperation = new GymCentreOperation();
 
     private Scanner scanner = new Scanner(System.in);
 
@@ -88,4 +88,6 @@ public class GymCustomerMenu {
             }
         }
     }
+    
+    
 }
