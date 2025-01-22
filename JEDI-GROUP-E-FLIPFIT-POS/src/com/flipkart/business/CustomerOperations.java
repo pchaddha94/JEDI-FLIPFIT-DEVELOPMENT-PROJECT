@@ -3,7 +3,11 @@
  */
 package com.flipkart.business;
 
+import com.flipkart.bean.BookSlot;
 import com.flipkart.bean.Customer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -32,13 +36,13 @@ public class CustomerOperations {
     	 System.out.println("Search Gym");
     	 return;
      }
-     public void viewAllBooking(Long customerId)
+     public List<BookSlot> viewAllBooking(Long customerId)
      {
     	 // view All Booking
     	 System.out.println("view All Booking");
-    	 return;
+    	 return null;
      }
-     public void cancelSlot()
+     public void cancelBookedSlot(String userName,  String slot)
      {
     	// cancel slot
     	 System.out.println("Cancel Slot");
@@ -58,5 +62,15 @@ public class CustomerOperations {
      }
      public boolean validUser(String email, String password){
          return true;
+     }
+
+     public Customer getCustomerByEmail(String email){
+         Customer customer = new Customer();
+         customer.setCustomerName("John Doe");
+         customer.setCustomerAddress("Flipkart");
+         customer.setCustomerPhone("123456789");
+         customer.setPassword("password");
+         customer.setCustomerEmailAddress("john.doe@flipkart.com");
+         return customer;
      }
 }

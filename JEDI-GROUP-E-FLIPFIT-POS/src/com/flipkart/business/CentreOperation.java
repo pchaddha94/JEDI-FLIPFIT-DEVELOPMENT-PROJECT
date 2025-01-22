@@ -42,4 +42,9 @@ public class CentreOperation {
         System.out.println("Deleting centre with Centre Id: " + id);
         return;
     }
+
+    public void bookSlot(Long centreId, Long slotId) {
+        System.out.println("Booking centre "+ centreId +" with Slot Id: " + slotId);
+        return;
+    }
 }
