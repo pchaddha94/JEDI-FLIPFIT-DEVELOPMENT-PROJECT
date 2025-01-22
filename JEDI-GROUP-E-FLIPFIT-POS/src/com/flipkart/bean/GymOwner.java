@@ -8,7 +8,7 @@ public class GymOwner {
 	private String ownerName;
 	private String ownerEmailAddress;
 	private int ownerPhone;
-	private int ownerGSTNum;
+	private int ownerPanNum;
 	private boolean isApproved;
 	private String ownerAddress;
 	private final UserRole userRole = UserRole.OWNER;
@@ -64,13 +64,13 @@ public class GymOwner {
 	 * @return the ownerGSTNum
 	 */
 	public int getOwnerGSTNum() {
-		return ownerGSTNum;
+		return ownerPanNum;
 	}
 	/**
 	 * @param ownerGSTNum the ownerGSTNum to set
 	 */
 	public void setOwnerGSTNum(int ownerGSTNum) {
-		this.ownerGSTNum = ownerGSTNum;
+		this.ownerPanNum = ownerGSTNum;
 	}
 	/**
 	 * @return the isApproved

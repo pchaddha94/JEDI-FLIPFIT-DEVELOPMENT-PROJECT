@@ -1,7 +1,7 @@
 package com.flipkart.client;
 
-import com.flipkart.bean.FlipFitGymCenter;
-import com.flipkart.bean.FlipFitSlot;
+import com.flipkart.bean.GymCenter;
+import com.flipkart.bean.Slot;
 import com.flipkart.business.*;
 
 import java.time.LocalDateTime;
@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.flipkart.utils.Util.*;
+import com.flipkart.utils.*;
 import java.util.Scanner; 
 
 public class GymOwnerMenu {
