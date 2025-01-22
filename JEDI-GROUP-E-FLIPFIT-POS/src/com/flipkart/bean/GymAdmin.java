@@ -1,5 +1,7 @@
 package com.flipkart.bean;
 
+import com.flipkart.utils.UserRole;
+
 public class GymAdmin {
 	
 	private Long adminId;
@@ -7,7 +9,7 @@ public class GymAdmin {
 	private String adminEmailAddress;
 	private String phone;
 	private String password;
-	
+	private final UserRole userRole = UserRole.ADMIN;
 	
 	/**
 	 * @return the adminId

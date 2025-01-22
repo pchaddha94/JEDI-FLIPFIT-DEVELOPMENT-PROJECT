@@ -1,8 +1,17 @@
 package com.flipkart.bean;
 
+import com.flipkart.utils.UserRole;
+
 public class GymOwner {
 
 	private long ownerId;
+	private String ownerName;
+	private String ownerEmailAddress;
+	private int ownerPhone;
+	private int ownerGSTNum;
+	private boolean isApproved;
+	private String ownerAddress;
+	private final UserRole userRole = UserRole.OWNER;
 	/**
 	 * @return the ownerId
 	 */
@@ -87,10 +96,5 @@ public class GymOwner {
 	public void setOwnerAddress(String ownerAddress) {
 		this.ownerAddress = ownerAddress;
 	}
-	private String ownerName;
-	private String ownerEmailAddress;
-	private int ownerPhone;
-	private int ownerGSTNum;
-	private boolean isApproved;
-	private String ownerAddress;
+
 }

@@ -1,7 +1,15 @@
 package com.flipkart.bean;
 
+import com.flipkart.utils.UserRole;
+
 public class Customer {
 	private long customerId;
+	private String customerName;
+	private String customerAddress;
+	private String customerEmailAddress;
+	private int customerPhone;
+	private String password;
+	private final UserRole userRole = UserRole.CUSTOMER;
 	/**
 	 * @return the customerId
 	 */
@@ -74,10 +82,8 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	private String customerName;
-	private String customerAddress;
-	private String customerEmailAddress;
-	private int customerPhone;
-	private String password;
 
+    public UserRole getUserRole() {
+        return userRole;
+    }
 }
