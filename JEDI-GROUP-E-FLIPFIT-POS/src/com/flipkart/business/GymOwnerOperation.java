@@ -31,6 +31,10 @@ public class GymOwnerOperation {
         return null;
     }
     
+    public boolean validUser(String email, String password){
+        return true;
+    }
+    
     
     public GymOwner createGymOwner(long ownerId,
      String ownerName,
@@ -52,10 +56,12 @@ public class GymOwnerOperation {
     	return gymOwner;
     }
     
-//    public GymOwner getGymOwnerByEmail(String email){
-//    	
-//    	
-//    }
+    
+    //Todo (take from database)
+    public GymOwner getGymOwnerByEmail(String email){
+    	return null;
+    	
+    }
 
 
 

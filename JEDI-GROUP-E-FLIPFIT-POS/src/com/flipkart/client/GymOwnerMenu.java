@@ -1,5 +1,6 @@
 package com.flipkart.client;
 
+import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slot;
@@ -18,10 +19,25 @@ public class GymOwnerMenu {
 	
 	private GymOwnerOperation gymOwnerOperations=new GymOwnerOperation();
 	Scanner scanner = new Scanner(System.in);
-	public boolean gymOwnerLogin(String userName, String password) {
-		System.out.println("Successfully logged in");
-		return true;
-	}
+	
+	
+	public boolean gymOwnerLogin(String email, String password) {
+        if(gymOwnerOperations.validUser(email, password)) {
+            System.out.println("Welcome " + email);
+            System.out.println("Successfully logged in");
+            GymOwner gymOwner = gymOwnerOperations.getGymOwnerByEmail(email);
+            gymOwnerClientMainPage("shan");
+//            gymOwnerClientMainPage(gymOwner.getOwnerName());
+        }
+        else{
+            System.out.println("Invalid username or password");
+            return false;
+        }
+        return  true;
+    }
+	
+
+	
     public void register() {
         System.out.println("Enter your Username");
         String userName = scanner.next();
