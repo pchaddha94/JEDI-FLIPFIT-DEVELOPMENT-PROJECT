@@ -20,20 +20,20 @@ public void initializeWaitingList(long waitListId, long centreId, int slotId) {
 public void addCustomerToWaitlist(Customer customer) {
 //add customer 
 	System.out.println("addCustomerToWaitlist() called: Customer " + customer.getCustomerName() + " added to the waiting list.");
-	return ;
+	
 }
 
 public void serveNextCustomer(Customer customer) {
 
 //find next customer
 	System.out.println("serveNextCustomer() called: Customer " + customer.getCustomerName()+ " has been served.");
-	return ;
+	
 }
 
 public void viewWaitingList() {
 //view list
 	System.out.println("viewWaitingList() called: Current waiting list: " );
-	return ;
+	r
 }
 
 
