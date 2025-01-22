@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class AdminOperation {
-	private GymAdmin admin = new GymAdmin();
+
 	
 	private List<GymOwner> pendinGymOwnerList = new ArrayList<>();
     private List<GymCenter> pendinGymCentreList = new ArrayList<>();
@@ -42,8 +42,12 @@ public class AdminOperation {
 	
 	public List<GymCenter> viewPendingGymCentres(){
         pendinGymCentreList = new ArrayList<>(); // TODO -> get the list
+         
+        
+
         return pendinGymCentreList;
     }
+
 
     public List<GymOwner> viewPendingGymOwners(){
         System.out.println("Viewing pending Gym Owner Approvals: ");
