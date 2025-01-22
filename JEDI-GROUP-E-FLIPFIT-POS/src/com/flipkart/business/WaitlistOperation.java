@@ -33,7 +33,7 @@ public void serveNextCustomer(Customer customer) {
 public void viewWaitingList() {
 //view list
 	System.out.println("viewWaitingList() called: Current waiting list: " );
-	r
+	
 }
 
 
