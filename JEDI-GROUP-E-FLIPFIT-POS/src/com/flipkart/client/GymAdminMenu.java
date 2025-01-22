@@ -10,9 +10,30 @@ import java.util.Scanner;
 public class GymAdminMenu {
     private AdminOperation adminOperation = new AdminOperation();
 
-    public void adminLogin(String userName, String password) {
+    public boolean adminLogin(String email, String password) {
         // TODO Auto-generated method stub
-    }
+    	 if(adminOperation .validUser(email, password)) {
+             System.out.println("Welcome " + email);
+             System.out.println("Successfully logged in");
+             GymAdmin gymAdmin = adminOperation.getAdminByEmail(email);
+             Scanner in = new Scanner(System.in);
+             try {
+                 this.AdminPage(in); // Call the AdminMainPage method with the Scanner object
+             } catch (Exception e) {
+                 e.printStackTrace();
+             }
+         } else {
+             System.out.println("Invalid username or password");
+             return false;
+         }
+         return true;
+//             gymOwnerClientMainPage(gymOwner.getOwnerName());
+         }
+         
+ 	
+
+    
+    
 
     public void approveGymOwner(Scanner in) {
         // TODO Auto-generated method stub
@@ -60,7 +81,9 @@ public class GymAdminMenu {
     }
 
     public void AdminPage(Scanner in) throws Exception {
-        while (true) {
+    	
+    	boolean running=true;
+        while (running) {
             System.out.println("1. View All Pending Gym Owners");
             System.out.println("2. View All Pending Gym Centres");
             System.out.println("3. Approve Gym Owner");

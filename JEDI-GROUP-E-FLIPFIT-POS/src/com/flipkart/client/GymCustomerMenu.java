@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GymCustomerMenu {
-    private CustomerOperations customerOperations = new CustomerOperations();
+    private  
     private GymCentreOperation centreOperation = new GymCentreOperation();
 
     private Scanner scanner = new Scanner(System.in);

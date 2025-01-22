@@ -1,26 +1,27 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.GymAdmin;
 import com.flipkart.bean.*;
 
 import java.util.List;
 import java.util.ArrayList;
 
 public class AdminOperation {
-	GymAdmin admin = new GymAdmin();
+	private GymAdmin admin = new GymAdmin();
 	
 	private List<GymOwner> pendinGymOwnerList = new ArrayList<>();
     private List<GymCenter> pendinGymCentreList = new ArrayList<>();
 	
-	public void createAdmin(long adminId, String adminName, String adminEmail, String adminPhone, String password)
-	{
-		admin.setAdminId(adminId);
-		admin.setAdminName(adminName);
-		admin.setAdminEmailAddress(adminEmail);
-		admin.setPhone(adminPhone);
-		admin.setPassword(password);
-		return;
-	}
+    public GymAdmin createAdmin(long adminId, String adminName, String adminEmail, String adminPhone, String password) {
+        GymAdmin admin = new GymAdmin();
+        admin.setAdminId(adminId);
+        admin.setAdminName(adminName);
+        admin.setAdminEmailAddress(adminEmail);
+        admin.setPhone(adminPhone);
+        admin.setPassword(password);
+        return admin;
+    }
+
+	
 	// 1- approve requests  2- view stuffs
 	
 	//TODO - task 1 (approve)
@@ -49,6 +50,18 @@ public class AdminOperation {
         pendinGymOwnerList = new ArrayList<>();  //TODO -> get the list
         return pendinGymOwnerList;
     }
+    public boolean validUser(String adminEmail, String password){
+        return true;
+    }
+    public GymAdmin getAdminByEmail(String email) {
+        GymAdmin admin = new GymAdmin();
+        admin.setAdminName("John Doe");
+        admin.setAdminEmailAddress("john.doe@flipkart.com");
+        admin.setPhone("123456789");
+        admin.setPassword("password");
+        return admin;
+    }
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
