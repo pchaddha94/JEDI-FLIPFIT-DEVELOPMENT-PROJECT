@@ -74,7 +74,7 @@ public class FlipFitApplication {
                     mainPage();
                     break;
                 case CUSTOMER:
-                    customerClient.register();
+                    customerClient.registerCustomer();
                     break;
                 case OWNER:
                     gymOwnerClient.register();
