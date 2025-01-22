@@ -67,29 +67,32 @@ public class GymOwnerMenu {
                     "0. View all Bookings\n" +
                     "1. Add new Gym Center\n" +
                     "2. Add Slots to a Gym Centre\n" +
-                    "3.Remove centre owned"+
-                    "4.Remove slot"+
-                    "5. Go Back to Previous Menu"
+                    "3.Remove centre owned\n"+
+                    "4.Remove slot\n"+
+                    "5. Go Back to Previous Menu\n"
             );
     		int choice = scanner.nextInt();
     		switch(choice) {
     			case 0:
-    				System.out.println("All bookings displayed");
+    				System.out.println("All bookings displayed\n");
     				break;
     			case 1:
     				System.out.println("Enter the Gym Name");
     				String name = scanner.nextLine();
+    				scanner.nextLine();
+    				
     				System.out.println("Enter Your Email ID");
     				String email = scanner.nextLine();
     				System.out.println("Enter the Gym Location");
     				String location = scanner.nextLine();
-    				System.out.println("Centre added successfully");
+    				System.out.println("Centre added successfully\n");
     				break;
     			case 2:
     				System.out.println("Enter the Centre id");
     				Long centreId = scanner.nextLong();
     				System.out.println("Enter Your Email ID");
     				String slotTimings = scanner.nextLine();
+    				scanner.nextLine();
     				System.out.println("Enter the Price for the slot");
     				String price = scanner.nextLine();
     				System.out.println("Slot added successfully");
@@ -97,15 +100,15 @@ public class GymOwnerMenu {
     			case 3:
     				System.out.println("Enter the centre id");
     				Long centerId = scanner.nextLong();
-    				System.out.println("Centre removed successfully");
+    				System.out.println("Centre removed successfully\n");
     				break;
     			case 4:
     				System.out.println("Enter the Slot id");
     				Long slotId = scanner.nextLong();
-    				System.out.println("Slot removed successfully");
+    				System.out.println("Slot removed successfully\n");
     				break;
     			case 5:
-    				System.out.println("Back to menu successful");
+    				System.out.println("Back to menu successful\n");
     				return;
     			default:
                     System.out.println("Invalid Option selected");
