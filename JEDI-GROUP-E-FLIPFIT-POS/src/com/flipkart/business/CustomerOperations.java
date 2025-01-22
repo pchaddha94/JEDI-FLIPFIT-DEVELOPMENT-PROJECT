@@ -3,15 +3,22 @@
  */
 package com.flipkart.business;
 
+import com.flipkart.bean.Customer;
+
 /**
  * 
  */
 public class CustomerOperations {
-     public void createCustomer (Long customerId, String customerName,String customerAddress, String customerEmail, int customerPhone , String customerPassword )
+     public Customer createCustomer (String customerName, String customerAddress, String customerEmail, String customerPhone , String customerPassword )
      {
     	 // create Customer 
-    	 return;
-      
+    	 Customer customer = new Customer();
+         customer.setCustomerName(customerName);
+         customer.setCustomerAddress(customerAddress);
+         customer.setCustomerPhone(customerPhone);
+         customer.setPassword(customerPassword);
+         customer.setCustomerEmailAddress( customerEmail);
+         return customer;
      }
      public void bookSlot(String Gym)
      {
@@ -48,5 +55,8 @@ public class CustomerOperations {
     	 // Edit Customer Details
     	 System.out.println("Edit Customer Details");
     	 return;
+     }
+     public boolean validUser(String email, String password){
+         return true;
      }
 }

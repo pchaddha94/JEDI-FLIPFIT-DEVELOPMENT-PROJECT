@@ -7,7 +7,7 @@ public class Customer {
 	private String customerName;
 	private String customerAddress;
 	private String customerEmailAddress;
-	private int customerPhone;
+	private String customerPhone;
 	private String password;
 	private final UserRole userRole = UserRole.CUSTOMER;
 	/**
@@ -61,13 +61,13 @@ public class Customer {
 	/**
 	 * @return the customerPhone
 	 */
-	public int getCustomerPhone() {
+	public String getCustomerPhone() {
 		return customerPhone;
 	}
 	/**
 	 * @param customerPhone the customerPhone to set
 	 */
-	public void setCustomerPhone(int customerPhone) {
+	public void setCustomerPhone(String customerPhone) {
 		this.customerPhone = customerPhone;
 	}
 	/**
