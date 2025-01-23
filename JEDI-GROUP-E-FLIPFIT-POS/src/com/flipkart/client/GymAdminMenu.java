@@ -1,5 +1,7 @@
 package com.flipkart.client;
 
+import com.flipkart.DAO.AdminDao;
+import com.flipkart.DAO.AdminDaoInterface;
 import com.flipkart.business.AdminOperation;
 import com.flipkart.bean.GymAdmin;
 import com.flipkart.bean.GymCenter;
@@ -10,6 +12,7 @@ import java.util.Scanner;
 
 public class GymAdminMenu {
     private AdminOperation adminOperation = new AdminOperation();
+    private AdminDaoInterface adminDao = new AdminDao();
     private Scanner in = new Scanner(System.in);
 
     public boolean adminLogin(String email, String password) {
@@ -38,7 +41,12 @@ public class GymAdminMenu {
         System.out.println("Enter your Phone");
         String phone = in.next();
 
-        System.out.println("Register successful");
+        GymAdmin gymAdmin = new GymAdmin();
+        gymAdmin.setAdminName(userName);
+        gymAdmin.setPassword(password);
+        gymAdmin.setPhone(phone);
+        gymAdmin.setAdminEmailAddress(email);
+        adminDao.addAdmin(gymAdmin);
         return true;
     }
 

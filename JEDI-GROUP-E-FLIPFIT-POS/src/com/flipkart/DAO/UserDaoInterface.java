@@ -6,4 +6,6 @@ public interface UserDaoInterface {
 
 	UserRole getUser(String userEmail);
 
+	public void addUserRole(UserRole userRole);
+
 }

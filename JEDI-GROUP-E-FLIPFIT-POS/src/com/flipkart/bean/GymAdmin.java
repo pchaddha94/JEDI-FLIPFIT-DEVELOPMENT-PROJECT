@@ -1,7 +1,5 @@
 package com.flipkart.bean;
 
-import com.flipkart.utils.UserRole;
-
 public class GymAdmin {
 	
 	private Long adminId;

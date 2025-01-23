@@ -33,4 +33,6 @@ public class Constants {
 	public static final String ADD_SLOT_BOOKING = "INSERT INTO jedi_flipfit_mysql.bookslot(customer_id,slot_id,booking_date,booking_status) VALUES(?,?,?,?)";
 	public static final String FETCH_ALL_GYM_CENTERS = "SELECT * from jedi_flipfit_mysql.gym_center WHERE is_approved=1";
 	public static final String INSERT_USER_ROLE = "INSERT INTO jedi_flipfit_mysql.user_role (user_id,user_role,user_email) VALUES (?,?,?)";
+	public static final String ADD_ADMIN = "INSERT INTO jedi_flipfit_mysql.gym_admin (admin_name, admin_email_id, admin_phone_no, admin_password) VALUES (?,?,?,?)";
+	public static final String GET_ADMIN_BY_EMAIL = "SELECT * from jedi_flipfit_mysql.gym_admin where admin_email_id=?";
 }

@@ -1,9 +1,11 @@
 package com.flipkart.bean;
 
+import com.flipkart.utils.UserRoleType;
+
 public class UserRole {
     private Long id;
     private Long userId;
-    private String userRole;
+    private UserRoleType userRole;
     private String userEmail;
 
     public Long getId() {
@@ -30,11 +32,11 @@ public class UserRole {
         this.userId = userId;
     }
 
-    public String getUserRole() {
+    public UserRoleType getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(String userRole) {
+    public void setUserRole(UserRoleType userRole) {
         this.userRole = userRole;
     }
 }

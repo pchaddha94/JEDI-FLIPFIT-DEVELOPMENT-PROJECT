@@ -1,6 +1,6 @@
 package com.flipkart.utils;
 
-public enum UserRole {
+public enum UserRoleType {
     ADMIN,
     CUSTOMER,
     OWNER

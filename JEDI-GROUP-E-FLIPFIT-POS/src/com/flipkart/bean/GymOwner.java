@@ -1,7 +1,5 @@
 package com.flipkart.bean;
 
-import com.flipkart.utils.UserRole;
-
 public class GymOwner {
 
     private long ownerId;
@@ -66,7 +64,7 @@ public class GymOwner {
         return ownerPanNum;
     }
     /**
-     * @param ownerGSTNum the ownerGSTNum to set
+     * @param ownerPanNum the ownerGSTNum to set
      */
     public void setOwnerPanNum(String ownerPanNum) {
         this.ownerPanNum = ownerPanNum;

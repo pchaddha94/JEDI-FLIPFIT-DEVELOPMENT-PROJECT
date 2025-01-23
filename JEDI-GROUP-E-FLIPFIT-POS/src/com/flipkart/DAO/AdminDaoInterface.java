@@ -2,6 +2,7 @@ package com.flipkart.DAO;
 
 import java.util.List;
 
+import com.flipkart.bean.GymAdmin;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.GymOwner;
 
@@ -19,5 +20,7 @@ public List<GymCenter> viewPendingGymRequests();
 	
 	public boolean approveGymRegistration(int gymCenterId);
 	
+	public void addAdmin(GymAdmin gymAdmin);
 
+	public GymAdmin getAdminByEmail(String email);
 }

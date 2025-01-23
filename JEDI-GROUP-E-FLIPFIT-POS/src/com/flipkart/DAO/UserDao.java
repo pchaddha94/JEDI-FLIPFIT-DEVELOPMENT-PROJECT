@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.flipkart.bean.UserRole;
+import com.flipkart.constants.Constants;
 import com.flipkart.utils.DB_utils;
+import com.flipkart.utils.UserRoleType;
 
 public class UserDao implements UserDaoInterface{
 	
@@ -25,7 +27,7 @@ public class UserDao implements UserDaoInterface{
                 user.setId(rs.getLong("user_id"));
                 user.setUserId(rs.getLong("user_id"));
                 String role = rs.getString("user_role");
-                user.setUserRole(role);
+                user.setUserRole(UserRoleType.valueOf(role));
                 return user;
             }
         }
@@ -34,5 +36,20 @@ public class UserDao implements UserDaoInterface{
         }
 		return null;
 	}
+
+    public void addUserRole(UserRole userRole){
+        try{
+            Connection connection = DB_utils.getConnection();
+            PreparedStatement stmt = connection.prepareStatement(Constants.INSERT_USER_ROLE);
+            stmt.setLong(1, userRole.getUserId());
+            stmt.setString(2, userRole.getUserRole().toString());
+            stmt.setString(3, userRole.getUserEmail());
+            stmt.executeUpdate();
+            stmt.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
 }

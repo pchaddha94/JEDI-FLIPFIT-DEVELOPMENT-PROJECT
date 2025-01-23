@@ -1,10 +1,8 @@
 package com.flipkart.business;
 
 import com.flipkart.bean.BookSlot;
-import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slot;
-import com.flipkart.utils.UserRole;
 
 import java.util.List;
 

@@ -1,22 +1,18 @@
 package com.flipkart.DAO;
 
-import com.flipkart.bean.BookSlot;
 import com.flipkart.bean.Customer;
-import com.flipkart.client.FlipFitApplication;
+import com.flipkart.bean.UserRole;
 import com.flipkart.constants.Constants;
-import com.flipkart.utils.BookingStatusType;
 import com.flipkart.utils.DB_utils;
-import com.flipkart.utils.UserRole;
+import com.flipkart.utils.UserRoleType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GymCustomerDAO implements GymCustomerDAOInterface{
 
+    private UserDaoInterface userDao = new UserDao();
     public void addCustomer(Customer customer){
         try{
             Connection connection = DB_utils.getConnection();
@@ -28,12 +24,11 @@ public class GymCustomerDAO implements GymCustomerDAOInterface{
             stmt.setString(5, customer.getPassword());
             stmt.executeUpdate();
             stmt.close();
-            stmt = connection.prepareStatement(Constants.INSERT_USER_ROLE);
-            stmt.setLong(1, getCustomerByEmail(customer.getCustomerEmailAddress()).getCustomerId());
-            stmt.setString(2, UserRole.CUSTOMER.toString());
-            stmt.setString(3, customer.getCustomerEmailAddress());
-            stmt.executeUpdate();
-            stmt.close();
+            UserRole userRole = new UserRole();
+            userRole.setUserId(getCustomerByEmail(customer.getCustomerEmailAddress()).getCustomerId());
+            userRole.setUserRole(UserRoleType.CUSTOMER);
+            userRole.setUserEmail(customer.getCustomerEmailAddress());
+            userDao.addUserRole(userRole);
         }
         catch (Exception e){
             e.printStackTrace();
