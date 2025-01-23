@@ -1,15 +1,12 @@
 package com.flipkart.DAO;
-package com.flipkart.DAO;
-import com.flipkart.utils. DB_utils;
-import com.flipkart.constants.Constants;
 
-import com.flipkart.bean.Customer;
+/*import com.flipkart.bean.Customer;
 import com.flipkart.bean.Slot;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.SQLException;*/
 public interface PaymentDAO {
 	
 	
