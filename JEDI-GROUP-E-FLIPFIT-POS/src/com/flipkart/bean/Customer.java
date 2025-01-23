@@ -9,7 +9,6 @@ public class Customer {
 	private String customerEmailAddress;
 	private String customerPhone;
 	private String password;
-	private final UserRole userRole = UserRole.CUSTOMER;
 	/**
 	 * @return the customerId
 	 */
@@ -82,8 +81,4 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-    public UserRole getUserRole() {
-        return userRole;
-    }
 }

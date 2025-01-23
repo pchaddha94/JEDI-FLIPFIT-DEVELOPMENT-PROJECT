@@ -11,7 +11,6 @@ public class GymOwner {
     private String ownerPanNum;
     private boolean isApproved;
     private String ownerAddress;
-    private final UserRole userRole = UserRole.OWNER;
     /**
      * @return the ownerId
      */

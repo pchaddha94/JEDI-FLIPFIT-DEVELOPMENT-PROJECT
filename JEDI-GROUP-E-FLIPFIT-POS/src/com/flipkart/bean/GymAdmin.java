@@ -9,7 +9,6 @@ public class GymAdmin {
 	private String adminEmailAddress;
 	private String phone;
 	private String password;
-	private final UserRole userRole = UserRole.ADMIN;
 	
 	/**
 	 * @return the adminId
