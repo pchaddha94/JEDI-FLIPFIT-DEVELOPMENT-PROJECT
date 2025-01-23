@@ -3,16 +3,19 @@
  */
 package com.flipkart.business;
 
+import com.flipkart.DAO.GymCustomerDAO;
+import com.flipkart.DAO.GymCustomerDAOInterface;
 import com.flipkart.bean.BookSlot;
 import com.flipkart.bean.Customer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 
  */
 public class CustomerOperations {
+
+    private GymCustomerDAOInterface gymCustomerDAO = new GymCustomerDAO();
      public Customer createCustomer (String customerName, String customerAddress, String customerEmail, String customerPhone , String customerPassword )
      {
     	 // create Customer 
@@ -22,6 +25,8 @@ public class CustomerOperations {
          customer.setCustomerPhone(customerPhone);
          customer.setPassword(customerPassword);
          customer.setCustomerEmailAddress( customerEmail);
+
+         gymCustomerDAO.addCustomer(customer);
          return customer;
      }
      public void bookSlot(String Gym)
