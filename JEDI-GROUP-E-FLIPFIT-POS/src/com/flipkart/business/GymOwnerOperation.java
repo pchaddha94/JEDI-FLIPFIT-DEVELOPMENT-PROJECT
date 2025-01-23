@@ -3,6 +3,7 @@ package com.flipkart.business;
 import com.flipkart.DAO.OwnerDAO;
 import com.flipkart.DAO.OwnerDAOInterface;
 import com.flipkart.bean.BookSlot;
+import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slot;
 
@@ -12,10 +13,10 @@ import java.util.Objects;
 public class GymOwnerOperation {
 
     private OwnerDAOInterface ownerDAO=new OwnerDAO();
-	
-    public Boolean AddCentre(Long centreID){
-        return true;
 
+	
+    public void addCentre(GymCenter gymCenter){
+        ownerDAO.addCenter(gymCenter);
     }
     public Boolean AddSlot(Slot slot, Long centreID){
         return true;

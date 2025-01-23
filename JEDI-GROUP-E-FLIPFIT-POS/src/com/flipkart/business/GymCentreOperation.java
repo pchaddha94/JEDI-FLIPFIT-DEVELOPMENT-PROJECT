@@ -24,6 +24,7 @@ public class GymCentreOperation {
 
     public GymCenter addCentre(GymCenter centre) {
         System.out.println("Add centre");
+        gymCenterDAO.addGymCenter(centre);
         //Add center to Database
         return centre;
     }

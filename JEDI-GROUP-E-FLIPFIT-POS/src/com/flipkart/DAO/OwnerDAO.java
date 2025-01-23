@@ -105,17 +105,16 @@ public class OwnerDAO implements OwnerDAOInterface {
     }
 
     @Override
-    public void addCenter(GymCenter center, Long ownerID) {
-        String sql = "INSERT INTO gym_center(center_id,owner_id,is_approved,center_name,center_location,center_email_id) VALUES (?,?,?,?,?,?)";
+    public void addCenter(GymCenter center) {
+        String sql = "INSERT INTO jedi_flipfit_mysql.gym_center(owner_id,is_approved,center_name,center_location,center_email_id) VALUES (?,?,?,?,?)";
         try {
             conn = DB_utils.getConnection();
             stmt = conn.prepareStatement(sql);
-            stmt.setLong(1,center.getId());
-            stmt.setLong(2,ownerID);
-            stmt.setBoolean(3,false);
-            stmt.setString(4,center.getName());
-            stmt.setString(5, center.getLocation());
-            stmt.setString(6, center.getEmail());
+            stmt.setLong(1,center.getGymOwnerId());
+            stmt.setBoolean(2,false);
+            stmt.setString(3,center.getName());
+            stmt.setString(4, center.getLocation());
+            stmt.setString(5, center.getEmail());
             stmt.executeUpdate();
         }
         catch (Exception e) {

@@ -1,5 +1,6 @@
 package com.flipkart.client;
 
+import com.flipkart.DAO.UserDao;
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.GymOwner;
@@ -18,6 +19,7 @@ import java.util.Scanner;
 public class GymOwnerMenu {
 	
 	private GymOwnerOperation gymOwnerOperations=new GymOwnerOperation();
+	private UserDao userDao=new UserDao();
 	Scanner scanner = new Scanner(System.in);
 	
 	
@@ -26,7 +28,7 @@ public class GymOwnerMenu {
             System.out.println("Welcome " + email);
             System.out.println("Successfully logged in");
             GymOwner gymOwner = gymOwnerOperations.getGymOwnerByEmail(email);
-            gymOwnerClientMainPage(gymOwner.getOwnerName());
+            gymOwnerClientMainPage(gymOwner.getOwnerName(),gymOwner.getOwnerId());
 //            gymOwnerClientMainPage(gymOwner.getOwnerName());
         }
         else{
@@ -61,7 +63,7 @@ public class GymOwnerMenu {
         
         GymOwner gymOwner=gymOwnerOperations.createGymOwner( userName, email,password, phone, panNumber, true, address);
     }
-    public void gymOwnerClientMainPage(String gymOwnerId) {
+    public void gymOwnerClientMainPage(String gymOwnerName, Long ownerId) {
     	while(true) {
     		System.out.println("" +
                     "0. View all Bookings\n" +
@@ -72,6 +74,7 @@ public class GymOwnerMenu {
                     "5. Go Back to Previous Menu\n"
             );
     		int choice = scanner.nextInt();
+			scanner.nextLine();
     		switch(choice) {
     			case 0:
     				System.out.println("All bookings displayed\n");
@@ -79,12 +82,23 @@ public class GymOwnerMenu {
     			case 1:
     				System.out.println("Enter the Gym Name");
     				String name = scanner.nextLine();
-    				scanner.nextLine();
-    				
-    				System.out.println("Enter Your Email ID");
+
+//					System.out.println(name);
+
+    				System.out.println("Enter Gym center Email ID");
     				String email = scanner.nextLine();
+//					System.out.println(email);
     				System.out.println("Enter the Gym Location");
     				String location = scanner.nextLine();
+//					System.out.println(location);
+
+					GymCenter gymCenter = new GymCenter();
+					gymCenter.setName(name);
+					gymCenter.setEmail(email);
+					gymCenter.setLocation(location);
+					gymCenter.setGymOwnerId(ownerId);
+					gymCenter.setIs_approved(false);
+					gymOwnerOperations.addCentre(gymCenter);
     				System.out.println("Centre added successfully\n");
     				break;
     			case 2:
