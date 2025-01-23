@@ -34,5 +34,11 @@ public class Slot {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public Long getCentreId() {
+		return centreId;
+	}
 
+	public void setCentreId(Long centreId) {
+		this.centreId = centreId;
+	}
 }

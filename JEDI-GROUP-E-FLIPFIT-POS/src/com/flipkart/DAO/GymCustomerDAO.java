@@ -40,12 +40,13 @@ public class GymCustomerDAO implements GymCustomerDAOInterface{
             PreparedStatement stmt = connection.prepareStatement(Constants.FETCH_CUSTOMER_BY_EMAIL);
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
-            rs.next();
             Customer customer = new Customer();
-            customer.setCustomerEmailAddress(rs.getString("customer_email_id"));
-            customer.setPassword(rs.getString("customer_password"));
-            customer.setCustomerName(rs.getString("customer_name"));
-            customer.setCustomerPhone(rs.getString("customer_phone_no"));
+            while(rs.next()){
+                customer.setCustomerEmailAddress(rs.getString("customer_email_id"));
+                customer.setPassword(rs.getString("customer_password"));
+                customer.setCustomerName(rs.getString("customer_name"));
+                customer.setCustomerPhone(rs.getString("customer_phone_no"));
+            }
             return customer;
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,5 +1,9 @@
 package com.flipkart.business;
 
+import com.flipkart.DAO.GymCenterDAO;
+import com.flipkart.DAO.GymCenterDAOInterface;
+import com.flipkart.DAO.SlotsDAO;
+import com.flipkart.DAO.SlotsDAOInterface;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
 
@@ -7,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GymCentreOperation {
+    private SlotsDAOInterface slotsDAO=new SlotsDAO();
+    private GymCenterDAOInterface gymCenterDAO=new GymCenterDAO();
     public GymCenter getCentre(Long centerId) {
         System.out.println("Getting centre with Centre Id: " + centerId);
         // Find Center with id as centreId
@@ -30,7 +36,7 @@ public class GymCentreOperation {
 
     public List<Slot> getAllSlots(Long centreId) {
         System.out.println("Getting all the slots for centre " + centreId);
-        return new ArrayList<Slot>();
+        return slotsDAO.getAllSlotsByGymCenterId(centreId);
     }
 
     public Slot getSlotById(Long slotId){
@@ -46,5 +52,10 @@ public class GymCentreOperation {
     public void deleteCentre(Long id) {
         System.out.println("Deleting centre with Centre Id: " + id);
         return;
+    }
+
+    public List<GymCenter> getAllGymCenters() {
+        System.out.println("Getting all the gym centers");
+        return gymCenterDAO.getAllGymCenters();
     }
 }
