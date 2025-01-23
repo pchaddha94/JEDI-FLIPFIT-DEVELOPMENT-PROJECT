@@ -7,6 +7,7 @@ import com.flipkart.DAO.UserDao;
 import com.flipkart.DAO.UserDaoInterface;
 import com.flipkart.bean.*;
 import com.flipkart.utils.*;
+import com.flipkart.utils.UserRole;
 
 
 public class FlipFitApplication {
@@ -51,7 +52,7 @@ public class FlipFitApplication {
             com.flipkart.bean.UserRole user = userDao.getUser(userEmail);
             
 //            System.out.println("Enter your Role");
-            com.flipkart.utils.UserRole role = com.flipkart.utils.UserRole.valueOf(user.getUserRole().toUpperCase());
+            UserRole role = UserRole.valueOf(user.getUserRole().toUpperCase());
 
             switch (role){
                 case ADMIN:

@@ -6,6 +6,7 @@ import com.flipkart.client.FlipFitApplication;
 import com.flipkart.constants.Constants;
 import com.flipkart.utils.BookingStatusType;
 import com.flipkart.utils.DB_utils;
+import com.flipkart.utils.UserRole;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,6 +26,12 @@ public class GymCustomerDAO implements GymCustomerDAOInterface{
             stmt.setString(3, customer.getCustomerEmailAddress());
             stmt.setString(4, customer.getCustomerPhone());
             stmt.setString(5, customer.getPassword());
+            stmt.executeUpdate();
+            stmt.close();
+            stmt = connection.prepareStatement(Constants.INSERT_USER_ROLE);
+            stmt.setLong(1, getCustomerByEmail(customer.getCustomerEmailAddress()).getCustomerId());
+            stmt.setString(2, UserRole.CUSTOMER.toString());
+            stmt.setString(3, customer.getCustomerEmailAddress());
             stmt.executeUpdate();
             stmt.close();
         }

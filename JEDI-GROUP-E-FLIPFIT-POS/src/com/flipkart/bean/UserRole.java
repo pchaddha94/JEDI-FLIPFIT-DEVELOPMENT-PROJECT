@@ -4,9 +4,18 @@ public class UserRole {
     private Long id;
     private Long userId;
     private String userRole;
+    private String userEmail;
 
     public Long getId() {
         return id;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public void setId(Long id) {
