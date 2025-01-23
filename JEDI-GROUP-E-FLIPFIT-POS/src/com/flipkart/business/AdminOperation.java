@@ -1,5 +1,6 @@
 package com.flipkart.business;
 
+import com.flipkart.DAO.AdminDao;
 import com.flipkart.bean.*;
 
 import java.util.List;
@@ -10,6 +11,8 @@ public class AdminOperation {
 	
 	private List<GymOwner> pendinGymOwnerList = new ArrayList<>();
     private List<GymCenter> pendinGymCentreList = new ArrayList<>();
+    
+    public AdminDao adminDao=new AdminDao();
 	
     public GymAdmin createAdmin(long adminId, String adminName, String adminEmail, String adminPhone, String password) {
         GymAdmin admin = new GymAdmin();
@@ -29,6 +32,7 @@ public class AdminOperation {
 	public boolean approveGymOwner(long ownerId)
 	{
 		System.out.println("Owner with ID: "+ownerId+" is approved");
+		adminDao.approveGymOwnerRegistration(ownerId);
 		return true;
 	}
 	
@@ -41,18 +45,14 @@ public class AdminOperation {
 	//TODO - task 2 (view)
 	
 	public List<GymCenter> viewPendingGymCentres(){
-        pendinGymCentreList = new ArrayList<>(); // TODO -> get the list
-         
+        return adminDao.viewPendingGymRequests();
         
-
-        return pendinGymCentreList;
     }
 
 
     public List<GymOwner> viewPendingGymOwners(){
         System.out.println("Viewing pending Gym Owner Approvals: ");
-        pendinGymOwnerList = new ArrayList<>();  //TODO -> get the list
-        return pendinGymOwnerList;
+       return adminDao.viewPendingGymOwnerRequests();
     }
     public boolean validUser(String adminEmail, String password){
     	//verification part TODO

@@ -16,9 +16,9 @@ public List<GymCenter> viewPendingGymRequests();
 	
 	public List<GymOwner> viewAllApprovedGymOnwers();
 	
-	public boolean approveGymOwnerRegistration(int gymOwnerId);
+	public boolean approveGymOwnerRegistration(long gymOwnerId);
 	
-	public boolean approveGymRegistration(int gymCenterId);
+	public boolean approveGymRegistration(long gymCenterId);
 	
 	public void addAdmin(GymAdmin gymAdmin);
 

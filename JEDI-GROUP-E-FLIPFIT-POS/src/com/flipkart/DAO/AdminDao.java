@@ -33,12 +33,12 @@ public class AdminDao implements AdminDaoInterface {
 
             while(rs.next()){
                 GymCenter gymCenter = new GymCenter();
-                gymCenter.setId(rs.getLong("id"));
-                gymCenter.setName(rs.getString("name"));
-                gymCenter.setEmail(rs.getString("email"));
-                gymCenter.setLocation(rs.getString("location"));
+                gymCenter.setId(rs.getLong("center_id"));
+                gymCenter.setName(rs.getString("center_name"));
+                gymCenter.setEmail(rs.getString("center_email_id"));
+                gymCenter.setLocation(rs.getString("center_location"));
                 gymCenter.setIs_approved(false);
-                gymCenter.setGymOwnerId(rs.getLong("gymOwnerId"));
+                gymCenter.setGymOwnerId(rs.getLong("owner_id"));
                 pendingReq.add(gymCenter);
             }
         } catch (SQLException sqlExcep){
@@ -53,19 +53,17 @@ public class AdminDao implements AdminDaoInterface {
         List<GymOwner> pendingGymOwnerReq = new ArrayList<>();
         try {
             connection = DB_utils.getConnection();
-            System.out.println("Getting Pending Gym Owner Requests...");
-            statement = connection.prepareStatement(Constants.FETCH_PENDING_OR_APPROVED_GYM_OWNERS);
-            statement.setString(1,"0");
+            statement = connection.prepareStatement(Constants.FETCH_PENDING_GYM_OWNERS);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 GymOwner gymOwner = new GymOwner();
-                gymOwner.setOwnerId(rs.getLong("ownerId"));
-                gymOwner.setOwnerAddress(rs.getString("ownerAddress"));
+                gymOwner.setOwnerId(rs.getLong("owner_id"));
+                gymOwner.setOwnerAddress(rs.getString("owner_address"));
                 gymOwner.setApproved(false);
-                gymOwner.setOwnerPhone(rs.getString("OwnerPhone"));
-                gymOwner.setOwnerPanNum(rs.getString("ownerPanNum"));
-                gymOwner.setOwnerName(rs.getString("ownerName"));
-                gymOwner.setOwnerEmailAddress(rs.getString("ownerEmailAddress"));              
+                gymOwner.setOwnerPhone(rs.getString("owner_phone_no"));
+                gymOwner.setOwnerPanNum(rs.getString("owner_pan"));
+                gymOwner.setOwnerName(rs.getString("owner_name"));
+                gymOwner.setOwnerEmailAddress(rs.getString("owner_email_id"));              
 
                 pendingGymOwnerReq.add(gymOwner);
             }
@@ -87,12 +85,12 @@ public class AdminDao implements AdminDaoInterface {
 
             while(rs.next()){
             	GymCenter gymCenter = new GymCenter();
-                gymCenter.setId(rs.getLong("id"));
-                gymCenter.setName(rs.getString("name"));
-                gymCenter.setEmail(rs.getString("email"));
-                gymCenter.setLocation(rs.getString("location"));
+            	gymCenter.setId(rs.getLong("center_id"));
+                gymCenter.setName(rs.getString("center_name"));
+                gymCenter.setEmail(rs.getString("center_email_id"));
+                gymCenter.setLocation(rs.getString("center_location"));
                 gymCenter.setIs_approved(false);
-                gymCenter.setGymOwnerId(rs.getLong("gymOwnerId"));
+                gymCenter.setGymOwnerId(rs.getLong("owner_id"));
                 approvedReq.add(gymCenter);
             }
         } catch (SQLException sqlExcep){
@@ -109,17 +107,17 @@ public class AdminDao implements AdminDaoInterface {
             connection = DB_utils.getConnection();
             System.out.println("Getting Approved Gym Owner Requests...");
             statement = connection.prepareStatement(Constants.FETCH_PENDING_OR_APPROVED_GYM_OWNERS);
-            statement.setString(1,"1");
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-            	GymOwner gymOwner=new GymOwner();
-            	gymOwner.setOwnerId(rs.getLong("ownerId"));
-                gymOwner.setOwnerAddress(rs.getString("ownerAddress"));
+            	GymOwner gymOwner = new GymOwner();
+                gymOwner.setOwnerId(rs.getLong("owner_id"));
+                gymOwner.setOwnerAddress(rs.getString("owner_address"));
                 gymOwner.setApproved(false);
-                gymOwner.setOwnerPhone(rs.getString("OwnerPhone"));
-                gymOwner.setOwnerPanNum(rs.getString("ownerPanNum"));
-                gymOwner.setOwnerName(rs.getString("ownerName"));
-                gymOwner.setOwnerEmailAddress(rs.getString("ownerEmailAddress"));
+                gymOwner.setOwnerPhone(rs.getString("owner_phone_no"));
+                gymOwner.setOwnerPanNum(rs.getString("owner_pan"));
+                gymOwner.setOwnerName(rs.getString("owner_name"));
+                gymOwner.setOwnerEmailAddress(rs.getString("owner_email_id"));              
+
 
                 approvedGymOwnerReq.add(gymOwner);
             }
@@ -131,13 +129,13 @@ public class AdminDao implements AdminDaoInterface {
         return approvedGymOwnerReq;
     }
 
-    public boolean approveGymOwnerRegistration(int gymOwnerId) {
+    public boolean approveGymOwnerRegistration(long gymOwnerId) {
         int result = 0;
         try {
             connection = DB_utils.getConnection();
             System.out.println("Approving Gym Owner Requests...");
             statement = connection.prepareStatement(Constants.APPROVE_GYM_OWNER);
-            statement.setInt(1, gymOwnerId);
+            statement.setLong(1, gymOwnerId);
             result = statement.executeUpdate();
             statement.close();
         } catch (SQLException sqlExcep) {
@@ -151,13 +149,13 @@ public class AdminDao implements AdminDaoInterface {
         return false;
     }
 
-    public boolean approveGymRegistration(int gymCenterId){
+    public boolean approveGymRegistration(long gymCenterId){
         int result = 0;
         try{
             connection = DB_utils.getConnection();
             System.out.println("Approving Gym Center Requests...");
             statement = connection.prepareStatement(Constants.APPROVE_GYM_CENTER);
-            statement.setInt(1,gymCenterId);
+            statement.setLong(1,gymCenterId);
             result = statement.executeUpdate();
             statement.close();
         } catch(SQLException sqlExcep) {
