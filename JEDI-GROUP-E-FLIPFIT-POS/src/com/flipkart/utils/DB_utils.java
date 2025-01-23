@@ -1,5 +1,6 @@
 package com.flipkart.utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +14,9 @@ public class DB_utils {
         try {
             if (Objects.isNull(connection)) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                FileInputStream inputStream = new FileInputStream("/Users/manan.patel/Documents/Jedi-Project/JEDI-Flipfit-Repo/JEDI-GROUP-E-FLIPFIT-POS/src/com/flipkart/config.properties");
+                String filePath = new File("").getAbsolutePath();
+                filePath=filePath.concat("/JEDI-GROUP-E-FLIPFIT-POS/src/config.properties");
+                FileInputStream inputStream = new FileInputStream(filePath);
                 Properties newProp = new Properties();
                 newProp.load(inputStream);
                 connection = DriverManager.getConnection(newProp.getProperty("db_url"), newProp.getProperty("db_user"),newProp.getProperty("db_password"));
@@ -25,3 +28,4 @@ public class DB_utils {
         return connection;
     }
 }
+
