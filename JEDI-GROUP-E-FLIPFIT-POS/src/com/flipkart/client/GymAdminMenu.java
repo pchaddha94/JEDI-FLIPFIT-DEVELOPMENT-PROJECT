@@ -25,6 +25,23 @@ public class GymAdminMenu {
         return true;
     }
 
+    public boolean adminRegister() {
+        System.out.println("Enter your Username");
+        String userName = in.next();
+
+        System.out.println("Enter your Password");
+        String password = in.next();
+
+        System.out.println("Enter your Email");
+        String email = in.next();
+
+        System.out.println("Enter your Phone");
+        String phone = in.next();
+
+        System.out.println("Register successful");
+        return true;
+    }
+
     public void approveGymOwner() {
         System.out.println("Enter the owner Id: ");
         Long owner_Id = in.nextLong();

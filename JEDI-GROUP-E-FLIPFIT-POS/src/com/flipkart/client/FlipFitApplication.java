@@ -35,14 +35,14 @@ public class FlipFitApplication {
 
     private static void login(){
         try {
-            System.out.println("Enter your Role");
-            UserRole role = UserRole.valueOf(scanner.next().toUpperCase());
-
             System.out.println("Enter your Username");
             String userName = scanner.next();
 
             System.out.println("Enter your Password");
             String password = scanner.next();
+
+            System.out.println("Enter your Role");
+            UserRole role = UserRole.valueOf(scanner.next().toUpperCase());
 
             switch (role){
                 case ADMIN:
@@ -70,8 +70,7 @@ public class FlipFitApplication {
 
             switch (role){
                 case ADMIN:
-                    System.out.println("Admin is already registered");
-                    mainPage();
+                    adminClient.adminRegister();
                     break;
                 case CUSTOMER:
                     customerClient.registerCustomer();
