@@ -6,3 +6,4 @@ bin
 *.class
 *.iml
 *.properties
+.metadata
