@@ -7,6 +7,7 @@ import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
 import com.flipkart.business.GymCentreOperation;
 import com.flipkart.business.CustomerOperations;
+import com.flipkart.business.FeedbackOperation;
 
 import java.util.List;
 import java.util.Scanner;
@@ -57,7 +58,7 @@ public class GymCustomerMenu {
         System.out.println("Welcome " + userName + ". Please choose your option: ");
         Customer customer = gymCustomerDAO.getCustomerByEmail(userName);
         while(true){
-            System.out.println("1. View available center.\n2. View available slots.\n3.Book slots.\n4.View Booking.\n5.Cancel Booking.\n6.Go back to main menu.");
+            System.out.println("1. View available center.\n2. View available slots.\n3.Book slots.\n4.View Booking.\n5.Cancel Booking.\n6.Give Feedback \n7.Go back to main menu.");
             int option = scanner.nextInt();
             switch(option){
                 case 1:
@@ -91,9 +92,32 @@ public class GymCustomerMenu {
                     customerOperation.cancelBookedSlot(userName,slot);
                     System.out.println("Slot cancelled");
                     break;
-                case 6:
+                case 7:
                     System.out.println("Returning to main menu");
                     return;
+                case 6:
+                	FeedbackOperation feedbackOperation = new FeedbackOperation();
+                    Scanner scanner = new Scanner(System.in);
+
+                    System.out.println("Enter User ID:");
+                    Long userId = scanner.nextLong();
+
+                    System.out.println("Enter Centre ID:");
+                    Long centreId = scanner.nextLong();
+
+                    scanner.nextLine(); // Consume the newline character left by nextLong()
+
+                    System.out.println("Enter Comments:");
+                    String comments = scanner.nextLine();
+
+                    System.out.println("Enter Rating (1-5):");
+                    int rating = scanner.nextInt();
+                    
+                    if (rating < 1 || rating > 5) {
+                        System.out.println("Invalid rating! Please enter a value between 1 and 5.");
+                    } else {
+                        feedbackOperation.addFeedback(userId, comments, rating, centreId);
+                    }
                 default:
                     System.out.println("Invalid option");
                     break;
