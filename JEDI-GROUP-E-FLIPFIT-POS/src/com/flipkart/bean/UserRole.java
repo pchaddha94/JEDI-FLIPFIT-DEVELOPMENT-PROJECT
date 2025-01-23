@@ -3,7 +3,7 @@ package com.flipkart.bean;
 public class UserRole {
     private Long id;
     private Long userId;
-    private UserRole userRole;
+    private String userRole;
 
     public Long getId() {
         return id;
@@ -21,11 +21,11 @@ public class UserRole {
         this.userId = userId;
     }
 
-    public UserRole getUserRole() {
+    public String getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(UserRole userRole) {
+    public void setUserRole(String userRole) {
         this.userRole = userRole;
     }
 }

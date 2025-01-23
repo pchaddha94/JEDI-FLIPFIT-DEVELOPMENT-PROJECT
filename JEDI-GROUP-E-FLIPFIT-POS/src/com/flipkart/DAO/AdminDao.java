@@ -1,6 +1,7 @@
 package com.flipkart.DAO;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.util.List;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.constants.Constants;
-import com.flipkart.utils.DBUtils;
+import com.flipkart.utils.DB_utils;
 
 public class AdminDao implements AdminDaoInterface {
 
@@ -20,7 +21,7 @@ public class AdminDao implements AdminDaoInterface {
     public List<GymCenter> viewPendingGymRequests(){
         List<GymCenter> pendingReq = new ArrayList<>();
         try {
-            connection = DBUtils.getConnection();
+            connection = DB_utils.getConnection();
             System.out.println("Getting Pending Requests...");
             statement = connection.prepareStatement(Constants.FETCH_PENDING_GYM_CENTERS);
             ResultSet rs = statement.executeQuery();
@@ -46,7 +47,7 @@ public class AdminDao implements AdminDaoInterface {
     public List<GymOwner> viewPendingGymOwnerRequests(){
         List<GymOwner> pendingGymOwnerReq = new ArrayList<>();
         try {
-            connection = DBUtils.getConnection();
+            connection = DB_utils.getConnection();
             System.out.println("Getting Pending Gym Owner Requests...");
             statement = connection.prepareStatement(Constants.FETCH_PENDING_OR_APPROVED_GYM_OWNERS);
             statement.setString(1,"0");
@@ -74,7 +75,7 @@ public class AdminDao implements AdminDaoInterface {
     public List<GymCenter> viewAllApprovedGyms(){
         List<GymCenter> approvedReq = new ArrayList<>();
         try {
-            connection = DBUtils.getConnection();
+            connection = DB_utils.getConnection();
             System.out.println("Getting Approved Requests...");
             statement = connection.prepareStatement(Constants.FETCH_ALL_APPROVED_GYMS);
             ResultSet rs = statement.executeQuery();
@@ -100,7 +101,7 @@ public class AdminDao implements AdminDaoInterface {
     public List<GymOwner> viewAllApprovedGymOnwers(){
         List<GymOwner> approvedGymOwnerReq = new ArrayList<>();
         try {
-            connection = DBUtils.getConnection();
+            connection = DB_utils.getConnection();
             System.out.println("Getting Approved Gym Owner Requests...");
             statement = connection.prepareStatement(Constants.FETCH_PENDING_OR_APPROVED_GYM_OWNERS);
             statement.setString(1,"1");
@@ -128,7 +129,7 @@ public class AdminDao implements AdminDaoInterface {
     public boolean approveGymOwnerRegistration(int gymOwnerId) {
         int result = 0;
         try {
-            connection = DBUtils.getConnection();
+            connection = DB_utils.getConnection();
             System.out.println("Approving Gym Owner Requests...");
             statement = connection.prepareStatement(Constants.APPROVE_GYM_OWNER);
             statement.setInt(1, gymOwnerId);
@@ -148,7 +149,7 @@ public class AdminDao implements AdminDaoInterface {
     public boolean approveGymRegistration(int gymCenterId){
         int result = 0;
         try{
-            connection = DBUtils.getConnection();
+            connection = DB_utils.getConnection();
             System.out.println("Approving Gym Center Requests...");
             statement = connection.prepareStatement(Constants.APPROVE_GYM_CENTER);
             statement.setInt(1,gymCenterId);

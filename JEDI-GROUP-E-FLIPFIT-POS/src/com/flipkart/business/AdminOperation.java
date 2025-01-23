@@ -55,6 +55,7 @@ public class AdminOperation {
         return pendinGymOwnerList;
     }
     public boolean validUser(String adminEmail, String password){
+    	//verification part TODO
         return true;
     }
     public GymAdmin getAdminByEmail(String email) {

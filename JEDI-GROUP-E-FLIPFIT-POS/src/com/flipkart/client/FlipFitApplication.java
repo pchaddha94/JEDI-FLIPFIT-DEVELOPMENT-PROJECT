@@ -3,7 +3,10 @@ package com.flipkart.client;
 import java.sql.*;
 import java.util.Scanner;
 
-import com.flipkart.utils.UserRole;
+import com.flipkart.DAO.UserDao;
+import com.flipkart.DAO.UserDaoInterface;
+import com.flipkart.bean.*;
+import com.flipkart.utils.*;
 
 
 public class FlipFitApplication {
@@ -38,24 +41,27 @@ public class FlipFitApplication {
 
     private static void login(){
         try {
-            System.out.println("Enter your Username");
-            String userName = scanner.next();
+            System.out.println("Enter your email");
+            String userEmail = scanner.next();
 
             System.out.println("Enter your Password");
             String password = scanner.next();
-
-            System.out.println("Enter your Role");
-            UserRole role = UserRole.valueOf(scanner.next().toUpperCase());
+            
+            UserDaoInterface userDao = new UserDao();           
+            com.flipkart.bean.UserRole user = userDao.getUser(userEmail);
+            
+//            System.out.println("Enter your Role");
+            com.flipkart.utils.UserRole role = com.flipkart.utils.UserRole.valueOf(user.getUserRole().toUpperCase());
 
             switch (role){
                 case ADMIN:
-                    adminClient.adminLogin(userName,password);
+                    adminClient.adminLogin(userEmail,password);
                     break;
                 case OWNER:
-                    gymOwnerClient.gymOwnerLogin(userName,password);
+                    gymOwnerClient.gymOwnerLogin(userEmail,password);
                     break;
                 case CUSTOMER:
-                    customerClient.customerLogin(userName,password);
+                    customerClient.customerLogin(userEmail,password);
                     break;
                 default:
                     System.out.println("Invalid Option Selected");
@@ -69,7 +75,7 @@ public class FlipFitApplication {
     private static void registration(){
         try {
             System.out.println("Enter your role");
-            UserRole role = UserRole.valueOf(scanner.next().toUpperCase());
+            com.flipkart.utils.UserRole role = com.flipkart.utils.UserRole.valueOf(scanner.next().toUpperCase());
 
             switch (role){
                 case ADMIN:
