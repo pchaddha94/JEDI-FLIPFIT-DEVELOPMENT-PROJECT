@@ -1,5 +1,7 @@
 package com.flipkart.client;
 
+import com.flipkart.DAO.GymCustomerDAO;
+import com.flipkart.DAO.GymCustomerDAOInterface;
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.Slot;
 import com.flipkart.business.GymCentreOperation;
@@ -12,13 +14,14 @@ public class GymCustomerMenu {
    
     private GymCentreOperation centreOperation = new GymCentreOperation();
     private CustomerOperations customerOperation = new CustomerOperations();
+    private GymCustomerDAOInterface gymCustomerDAO = new GymCustomerDAO();
     private Scanner scanner = new Scanner(System.in);
 
     public boolean customerLogin(String email, String password) {
         if(customerOperation.validUser(email, password)) {
             System.out.println("Welcome " + email);
             System.out.println("Successfully logged in");
-            Customer customer = customerOperation.getCustomerByEmail(email);
+            Customer customer = gymCustomerDAO.getCustomerByEmail(email);
             customerMainPage(customer.getCustomerName());
         }
         else{

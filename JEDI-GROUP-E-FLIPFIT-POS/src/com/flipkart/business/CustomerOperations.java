@@ -9,6 +9,7 @@ import com.flipkart.bean.BookSlot;
 import com.flipkart.bean.Customer;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 
@@ -66,16 +67,7 @@ public class CustomerOperations {
     	 return;
      }
      public boolean validUser(String email, String password){
-         return true;
-     }
-
-     public Customer getCustomerByEmail(String email){
-         Customer customer = new Customer();
-         customer.setCustomerName("Flipfit Customer");
-         customer.setCustomerAddress("Flipkart ETV");
-         customer.setCustomerPhone("123456789");
-         customer.setPassword("password");
-         customer.setCustomerEmailAddress("flipkart.customer@flipkart.com");
-         return customer;
+         Customer customer = gymCustomerDAO.getCustomerByEmail(email);
+         return Objects.equals(customer.getPassword(), password);
      }
 }

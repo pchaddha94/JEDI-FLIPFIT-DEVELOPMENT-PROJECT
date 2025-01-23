@@ -6,6 +6,7 @@ import com.flipkart.utils.DB_utils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class GymCustomerDAO implements GymCustomerDAOInterface{
 
@@ -24,5 +25,25 @@ public class GymCustomerDAO implements GymCustomerDAOInterface{
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Customer getCustomerByEmail(String email) {
+        try {
+            Connection connection = DB_utils.getConnection();
+            PreparedStatement stmt = connection.prepareStatement("SELECT * from jedi_flipfit_mysql.Customer where customer_email_id=?");
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            Customer customer = new Customer();
+            customer.setCustomerEmailAddress(rs.getString("customer_email_id"));
+            customer.setPassword(rs.getString("customer_password"));
+            customer.setCustomerName(rs.getString("customer_name"));
+            customer.setCustomerPhone(rs.getString("phone"));
+            return customer;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
