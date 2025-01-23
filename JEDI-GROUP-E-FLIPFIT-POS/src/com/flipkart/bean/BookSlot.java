@@ -2,7 +2,8 @@ package com.flipkart.bean;
 
 import com.flipkart.utils.BookingStatusType;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 public class BookSlot {
     private Long bookingId;
@@ -10,7 +11,7 @@ public class BookSlot {
     private Long slotId;
     private Date slotBookingDate;
 
-    public Date getSlotBookingDate() {
+    public java.sql.Date getSlotBookingDate() {
         return slotBookingDate;
     }
 

@@ -1,5 +1,7 @@
 package com.flipkart.client;
 
+import com.flipkart.DAO.GymCustomerDAO;
+import com.flipkart.DAO.GymCustomerDAOInterface;
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.Slot;
 import com.flipkart.business.GymCentreOperation;
@@ -12,13 +14,14 @@ public class GymCustomerMenu {
    
     private GymCentreOperation centreOperation = new GymCentreOperation();
     private CustomerOperations customerOperation = new CustomerOperations();
+    private GymCustomerDAOInterface gymCustomerDAO = new GymCustomerDAO();
     private Scanner scanner = new Scanner(System.in);
 
     public boolean customerLogin(String email, String password) {
         if(customerOperation.validUser(email, password)) {
             System.out.println("Welcome " + email);
             System.out.println("Successfully logged in");
-            Customer customer = customerOperation.getCustomerByEmail(email);
+            Customer customer = gymCustomerDAO.getCustomerByEmail(email);
             customerMainPage(customer.getCustomerName());
         }
         else{
@@ -51,6 +54,7 @@ public class GymCustomerMenu {
 
     public void customerMainPage(String userName) {
         System.out.println("Welcome " + userName + ". Please choose your option: ");
+        Customer customer = gymCustomerDAO.getCustomerByEmail(userName);
         while(true){
             System.out.println("1. View available slots.\n2.Book slots.\n3.View Booking.\n4.Cancel Booking.\n5.Go back to main menu.");
             int option = scanner.nextInt();
@@ -62,13 +66,10 @@ public class GymCustomerMenu {
                     System.out.println("Available slots:\n1. Slot 1\n2. Slot 2\n3. Slot 3");
                     break;
                 case 2:
-                    System.out.println("Please enter gym centre\n");
-                    String gymCentre = scanner.next();
+                    System.out.println("Please enter slot Id");
+                    Long slotId = scanner.nextLong();
 
-                    System.out.println("Please enter slot");
-                    String slotName = scanner.next();
-
-                    centreOperation.bookSlot(1L,1L);
+                    customerOperation.bookSlot(customer.getCustomerId(),slotId);
                     break;
                 case 3:
                     System.out.println(customerOperation.viewAllBooking(1L));
