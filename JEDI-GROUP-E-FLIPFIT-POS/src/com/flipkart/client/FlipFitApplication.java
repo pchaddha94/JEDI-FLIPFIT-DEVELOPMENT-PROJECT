@@ -98,12 +98,15 @@ public class FlipFitApplication {
             String oldPassword = scanner.next();
             System.out.println("Enter your new password");
             String newPassword = scanner.next();
+
             while(oldPassword.equals(newPassword)){
                 System.out.println("This is same as old password, please enter a new password");
                 newPassword = scanner.next();
             }
+
             System.out.println("Enter your new password again");
             String newPasswordAgain = scanner.next();
+
             while (!newPassword.equals(newPasswordAgain)){
                 System.out.println("Passwords do not match, please try again");
                 System.out.println("Enter your new password");
@@ -111,11 +114,12 @@ public class FlipFitApplication {
                 System.out.println("Enter your new password again");
                 newPasswordAgain = scanner.next();
             }
-            System.out.println("Password changed successfully");
+            System.out.println("Password changed successfully\n");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
     public static void main(String[] args) {
         System.out.println("Welcome to FlipFit Application!\n");
         mainPage();
