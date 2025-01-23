@@ -9,16 +9,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GymCustomerMenu {
-    private  
+   
     private GymCentreOperation centreOperation = new GymCentreOperation();
-
+    private CustomerOperations customerOperation = new CustomerOperations();
     private Scanner scanner = new Scanner(System.in);
 
     public boolean customerLogin(String email, String password) {
-        if(customerOperations.validUser(email, password)) {
+        if(customerOperation.validUser(email, password)) {
             System.out.println("Welcome " + email);
             System.out.println("Successfully logged in");
-            Customer customer = customerOperations.getCustomerByEmail(email);
+            Customer customer = customerOperation.getCustomerByEmail(email);
             customerMainPage(customer.getCustomerName());
         }
         else{
@@ -45,7 +45,7 @@ public class GymCustomerMenu {
         System.out.println("Please enter your address");
         String address = scanner.next();
 
-        Customer customer = customerOperations.createCustomer(username, address,email,phoneNumber,password);
+        Customer customer = customerOperation.createCustomer(username, address,email,phoneNumber,password);
         customerMainPage(customer.getCustomerName());
     }
 
@@ -71,12 +71,12 @@ public class GymCustomerMenu {
                     centreOperation.bookSlot(1L,1L);
                     break;
                 case 3:
-                    System.out.println(customerOperations.viewAllBooking(1L));
+                    System.out.println(customerOperation.viewAllBooking(1L));
                     break;
                 case 4:
                     System.out.println("Please enter slot");
                     String slot = scanner.next();
-                    customerOperations.cancelBookedSlot(userName,slot);
+                    customerOperation.cancelBookedSlot(userName,slot);
                     System.out.println("Slot cancelled");
                     break;
                 case 5:

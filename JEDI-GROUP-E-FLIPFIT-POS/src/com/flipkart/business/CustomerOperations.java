@@ -66,11 +66,11 @@ public class CustomerOperations {
 
      public Customer getCustomerByEmail(String email){
          Customer customer = new Customer();
-         customer.setCustomerName("John Doe");
-         customer.setCustomerAddress("Flipkart");
+         customer.setCustomerName("Flipfit Customer");
+         customer.setCustomerAddress("Flipkart ETV");
          customer.setCustomerPhone("123456789");
          customer.setPassword("password");
-         customer.setCustomerEmailAddress("john.doe@flipkart.com");
+         customer.setCustomerEmailAddress("flipkart.customer@flipkart.com");
          return customer;
      }
 }

@@ -59,8 +59,8 @@ public class AdminOperation {
     }
     public GymAdmin getAdminByEmail(String email) {
         GymAdmin admin = new GymAdmin();
-        admin.setAdminName("John Doe");
-        admin.setAdminEmailAddress("john.doe@flipkart.com");
+        admin.setAdminName("Flipfit Admin");
+        admin.setAdminEmailAddress("flipfit.admin@flipkart.com");
         admin.setPhone("123456789");
         admin.setPassword("password");
         return admin;
