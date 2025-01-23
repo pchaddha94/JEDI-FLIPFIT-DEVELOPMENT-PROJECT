@@ -114,8 +114,8 @@ public class FlipFitApplication {
                 System.out.println("Enter your new password again");
                 newPasswordAgain = scanner.next();
             }
-            System.out.println("Password changed successfully\n");
 
+            System.out.println("Password changed successfully\n");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
