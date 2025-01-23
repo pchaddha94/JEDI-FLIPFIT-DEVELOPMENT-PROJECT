@@ -23,6 +23,9 @@ public class FlipFitApplication {
             case 2:
                 registration();
                 break;
+            case 3:
+                changePassword();
+                break;
             case 4:
                 System.out.println("Thanks for visiting!");
                 return;
@@ -84,6 +87,33 @@ public class FlipFitApplication {
             }
         }catch (Exception e){  //TODO
             System.out.println("Invalid Option Selected");
+        }
+    }
+
+    private static void changePassword(){
+        try{
+            System.out.println("Enter your username");
+            String userName = scanner.next();
+            System.out.println("Enter your old password");
+            String oldPassword = scanner.next();
+            System.out.println("Enter your new password");
+            String newPassword = scanner.next();
+            while(oldPassword.equals(newPassword)){
+                System.out.println("This is same as old password, please enter a new password");
+                newPassword = scanner.next();
+            }
+            System.out.println("Enter your new password again");
+            String newPasswordAgain = scanner.next();
+            while (!newPassword.equals(newPasswordAgain)){
+                System.out.println("Passwords do not match, please try again");
+                System.out.println("Enter your new password");
+                newPassword = scanner.next();
+                System.out.println("Enter your new password again");
+                newPasswordAgain = scanner.next();
+            }
+            System.out.println("Password changed successfully");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
     public static void main(String[] args) {
