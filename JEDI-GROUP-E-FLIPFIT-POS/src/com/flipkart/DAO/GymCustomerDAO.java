@@ -45,7 +45,7 @@ public class GymCustomerDAO implements GymCustomerDAOInterface{
             customer.setCustomerEmailAddress(rs.getString("customer_email_id"));
             customer.setPassword(rs.getString("customer_password"));
             customer.setCustomerName(rs.getString("customer_name"));
-            customer.setCustomerPhone(rs.getString("phone"));
+            customer.setCustomerPhone(rs.getString("customer_phone_no"));
             return customer;
         } catch (Exception e) {
             e.printStackTrace();
