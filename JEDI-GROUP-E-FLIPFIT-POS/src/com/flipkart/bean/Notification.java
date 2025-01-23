@@ -2,23 +2,28 @@ package com.flipkart.bean;
 
 public class Notification {
 	
-	public int notificationID;
-	public int getNotificationID() {
+	public Long notificationID;
+	public Long senderID;
+	public Long receiverID;
+	public String message;
+	
+	
+	public Long getNotificationID() {
 		return notificationID;
 	}
-	public void setNotificationID(int notificationID) {
+	public void setNotificationID(Long notificationID) {
 		this.notificationID = notificationID;
 	}
-	public int getSenderID() {
+	public Long getSenderID() {
 		return senderID;
 	}
-	public void setSenderID(int senderID) {
+	public void setSenderID(Long senderID) {
 		this.senderID = senderID;
 	}
-	public int getReceiverID() {
+	public Long getReceiverID() {
 		return receiverID;
 	}
-	public void setReceiverID(int receiverID) {
+	public void setReceiverID(Long receiverID) {
 		this.receiverID = receiverID;
 	}
 	public String getMessage() {
@@ -27,9 +32,10 @@ public class Notification {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public int senderID;
-	public int receiverID;
-	public String message;
+	
+	
+	
+
 	
 
 }
