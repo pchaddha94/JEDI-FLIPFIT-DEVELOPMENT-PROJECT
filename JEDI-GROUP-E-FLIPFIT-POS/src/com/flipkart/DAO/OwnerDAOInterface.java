@@ -14,4 +14,5 @@ public interface OwnerDAOInterface {
     ArrayList<GymCenter> getAllApprovedCenters(Long ownerID);
     void addSlot(Long ownerID, Slot slot);
     ArrayList<Slot> getAllSlots(Long ownerID, Long centerID);
+    public GymOwner getGymOwnerByEmail(String email);
 }

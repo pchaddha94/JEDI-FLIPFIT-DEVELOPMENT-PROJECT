@@ -103,7 +103,7 @@ public class GymCustomerMenu {
                     Long userId = scanner.nextLong();
 
                     System.out.println("Enter Centre ID:");
-                    Long centreId = scanner.nextLong();
+                    centreId = scanner.nextLong();
 
                     scanner.nextLine(); // Consume the newline character left by nextLong()
 

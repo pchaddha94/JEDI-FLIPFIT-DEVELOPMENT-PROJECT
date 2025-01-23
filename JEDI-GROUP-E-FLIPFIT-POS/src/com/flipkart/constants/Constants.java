@@ -6,6 +6,7 @@ public class Constants {
 	public static final String FETCH_ALL_SLOTS_OF_GYM = "SELECT * FROM jedi_flipfit_mysql.slots WHERE center_id=?";
 	public static final String FETCH_GYMOWNER_DETAILS = "SELECT * FROM GymOwner WHERE email=?";
 	public static final String FETCH_GYMOWNER_ALL_GYMS = "SELECT * FROM GymCenter WHERE gymOwnerEmail=?";
+	public static final String FETCH_GYM_OWNER_BY_EMAIL_ID = "SELECT * FROM jedi_flipfit_mysql.gym_owner WHERE owner_email_id=?";
 	public static final String INSERT_GYM = "INSERT INTO jedi_flipfit_mysql.gym_center (center_name,center_email_id,is_approved,center_location,owner_id) values (?, ?, ?, ?, ?)";
 
 	public static final String CREATE_SLOT = "INSERT INTO Slot (id, time) values(?, ?)";
@@ -35,4 +36,5 @@ public class Constants {
 	public static final String INSERT_USER_ROLE = "INSERT INTO jedi_flipfit_mysql.user_role (user_id,user_role,user_email) VALUES (?,?,?)";
 	public static final String ADD_ADMIN = "INSERT INTO jedi_flipfit_mysql.gym_admin (admin_name, admin_email_id, admin_phone_no, admin_password) VALUES (?,?,?,?)";
 	public static final String GET_ADMIN_BY_EMAIL = "SELECT * from jedi_flipfit_mysql.gym_admin where admin_email_id=?";
+	public static final String ADD_GYM_OWNER = "INSERT INTO jedi_flipfit_mysql.gym_owner (owner_name, owner_id,owner_pan,owner_phone_no,owner_address,is_approved,owner_email_id,password) VALUES (?,?,?,?,?,?,?,?)";
 }

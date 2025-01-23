@@ -8,17 +8,20 @@ import java.util.ArrayList;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slot;
+import com.flipkart.bean.UserRole;
+import com.flipkart.constants.Constants;
 import com.flipkart.utils.DB_utils;
+import com.flipkart.utils.UserRoleType;
 
 public class OwnerDAO implements OwnerDAOInterface {
 
     private static Connection conn = null;
     private static PreparedStatement stmt = null;
+    private UserDao userDao = new UserDao();
     public void addOwner(GymOwner gymOwner) {
-        String sql = "INSERT INTO gym_owner (owner_name, owner_id,owner_pan,owner_phone_no,owner_address,is_approved,owner_email_id) VALUES (?,?,?,?,?,?,?)";
         try {
             conn = DB_utils.getConnection();
-            stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(Constants.ADD_GYM_OWNER);
             stmt.setString(1, gymOwner.getOwnerName());
             stmt.setLong(2, gymOwner.getOwnerId());
             stmt.setString(3, gymOwner.getOwnerPanNum());
@@ -26,10 +29,19 @@ public class OwnerDAO implements OwnerDAOInterface {
             stmt.setString(5, gymOwner.getOwnerAddress());
             stmt.setBoolean(6, gymOwner.isApproved());
             stmt.setString(7, gymOwner.getOwnerEmailAddress());
+            stmt.setString(8,gymOwner.getPassword());
             stmt.executeUpdate();
+            UserRole userRole = new UserRole();
+            userRole.setUserId(getGymOwnerByEmail(gymOwner.getOwnerEmailAddress()).getOwnerId());
+            userRole.setUserEmail(gymOwner.getOwnerEmailAddress());
+            userRole.setUserRole(UserRoleType.OWNER);
+            userDao.addUserRole(userRole);
+            System.out.println("Owner registered successfully");
+            return;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("Owner registration failed");
     }
 
     @Override
@@ -169,6 +181,32 @@ public class OwnerDAO implements OwnerDAOInterface {
 
     @Override
     public ArrayList<Slot> getAllSlots(Long ownerID, Long centerID) {
+        return null;
+    }
+
+    @Override
+    public GymOwner getGymOwnerByEmail(String email) {
+        try{
+            conn = DB_utils.getConnection();
+            stmt = conn.prepareStatement(Constants.FETCH_GYM_OWNER_BY_EMAIL_ID);
+            stmt.setString(1,email);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                GymOwner gymOwner = new GymOwner();
+                gymOwner.setOwnerId(rs.getLong("owner_id"));
+                gymOwner.setOwnerName(rs.getString("owner_name"));
+                gymOwner.setOwnerPanNum(rs.getString("owner_pan"));
+                gymOwner.setOwnerPanNum(rs.getString("owner_phone_no"));
+                gymOwner.setOwnerAddress(rs.getString("owner_address"));
+                gymOwner.setApproved(rs.getBoolean("is_approved"));
+                gymOwner.setOwnerEmailAddress(rs.getString("owner_email_id"));
+                gymOwner.setPassword(rs.getString("password"));
+                return gymOwner;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("Invalid Email");
         return null;
     }
 }

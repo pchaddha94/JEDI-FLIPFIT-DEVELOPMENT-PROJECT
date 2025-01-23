@@ -1,5 +1,6 @@
 package com.flipkart.client;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 import com.flipkart.DAO.UserDao;
@@ -49,6 +50,9 @@ public class FlipFitApplication {
             com.flipkart.bean.UserRole user = userDao.getUser(userEmail);
             
 //            System.out.println("Enter your Role");
+            if(Objects.isNull(user)){
+                return;
+            }
             UserRoleType role = user.getUserRole();
 
             switch (role){

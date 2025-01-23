@@ -34,6 +34,7 @@ public class UserDao implements UserDaoInterface{
         catch (Exception e){
             e.printStackTrace();
         }
+        System.out.println("Invalid User Email");
 		return null;
 	}
 

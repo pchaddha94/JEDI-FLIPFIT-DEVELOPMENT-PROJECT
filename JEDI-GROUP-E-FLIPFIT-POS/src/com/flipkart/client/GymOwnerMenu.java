@@ -26,7 +26,7 @@ public class GymOwnerMenu {
             System.out.println("Welcome " + email);
             System.out.println("Successfully logged in");
             GymOwner gymOwner = gymOwnerOperations.getGymOwnerByEmail(email);
-            gymOwnerClientMainPage("shan");
+            gymOwnerClientMainPage(gymOwner.getOwnerName());
 //            gymOwnerClientMainPage(gymOwner.getOwnerName());
         }
         else{
@@ -59,7 +59,7 @@ public class GymOwnerMenu {
 
         System.out.println("Register successful");
         
-        GymOwner gymOwner=gymOwnerOperations.createGymOwner(0, userName, email, phone, panNumber, true, address);
+        GymOwner gymOwner=gymOwnerOperations.createGymOwner( userName, email,password, phone, panNumber, true, address);
     }
     public void gymOwnerClientMainPage(String gymOwnerId) {
     	while(true) {

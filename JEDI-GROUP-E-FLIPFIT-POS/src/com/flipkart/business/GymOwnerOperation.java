@@ -1,12 +1,17 @@
 package com.flipkart.business;
 
+import com.flipkart.DAO.OwnerDAO;
+import com.flipkart.DAO.OwnerDAOInterface;
 import com.flipkart.bean.BookSlot;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slot;
 
 import java.util.List;
+import java.util.Objects;
 
 public class GymOwnerOperation {
+
+    private OwnerDAOInterface ownerDAO=new OwnerDAO();
 	
     public Boolean AddCentre(Long centreID){
         return true;
@@ -30,13 +35,19 @@ public class GymOwnerOperation {
     }
     
     public boolean validUser(String email, String password){
+        GymOwner gymOwner = ownerDAO.getGymOwnerByEmail(email);
+        if(Objects.isNull(gymOwner) || Objects.isNull(gymOwner.getPassword()) || !Objects.equals(gymOwner.getPassword(), password)){
+//            System.out.println("Invalid email or password");
+            return false;
+        }
         return true;
     }
     
     
-    public GymOwner createGymOwner(long ownerId,
+    public GymOwner createGymOwner(
      String ownerName,
      String ownerEmailAddress,
+     String ownerPassword,
      String ownerPhone,
      String ownerPanNum,
      boolean isApproved,
@@ -45,19 +56,19 @@ public class GymOwnerOperation {
     	gymOwner.setApproved(isApproved);
     	gymOwner.setOwnerAddress(ownerAddress);
     	gymOwner.setOwnerEmailAddress(ownerEmailAddress);
-    	gymOwner.setOwnerId(ownerId);
     	gymOwner.setOwnerName(ownerName);
+        gymOwner.setPassword(ownerPassword);
     	gymOwner.setOwnerPanNum(ownerPanNum);
     	gymOwner.setOwnerPhone(ownerPhone);
 
-    	
+        ownerDAO.addOwner(gymOwner);
     	return gymOwner;
     }
     
     
     //Todo (take from database)
     public GymOwner getGymOwnerByEmail(String email){
-    	return null;
+    	return ownerDAO.getGymOwnerByEmail(email);
     	
     }
 

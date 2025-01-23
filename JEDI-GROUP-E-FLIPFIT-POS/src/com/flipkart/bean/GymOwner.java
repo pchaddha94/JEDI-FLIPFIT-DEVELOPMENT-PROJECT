@@ -9,6 +9,16 @@ public class GymOwner {
     private String ownerPanNum;
     private boolean isApproved;
     private String ownerAddress;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     /**
      * @return the ownerId
      */
