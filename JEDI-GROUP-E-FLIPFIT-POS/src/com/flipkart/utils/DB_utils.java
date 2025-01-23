@@ -13,7 +13,7 @@ public class DB_utils {
         try {
             if (Objects.isNull(connection)) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                FileInputStream inputStream = new FileInputStream("/Users/manan.patel/Documents/Jedi-Project/JEDI-Flipfit-Repo/JEDI-GROUP-E-FLIPFIT-POS/src/com/flipkart/config.properties");
+                FileInputStream inputStream = new FileInputStream("/Users/ambekar.s/Documents/workspace-spring-tool-suite-4-4.27.0.RELEASE/JEDI-FLIPFIT-DEVELOPMENT-PROJECT/JEDI-GROUP-E-FLIPFIT-POS/src/config.properties");
                 Properties newProp = new Properties();
                 newProp.load(inputStream);
                 connection = DriverManager.getConnection(newProp.getProperty("db_url"), newProp.getProperty("db_user"),newProp.getProperty("db_password"));
