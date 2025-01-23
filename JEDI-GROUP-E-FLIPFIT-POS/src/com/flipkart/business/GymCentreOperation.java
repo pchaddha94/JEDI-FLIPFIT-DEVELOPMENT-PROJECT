@@ -33,6 +33,11 @@ public class GymCentreOperation {
         return new ArrayList<Slot>();
     }
 
+    public Slot getSlotById(Long slotId){
+        System.out.println("Getting slot with id " + slotId);
+        return new Slot();
+    }
+
     public GymCenter updateCentre(Long id, GymCenter centre) {
         System.out.println("Updating centre with Centre Id: " + centre.getId());
         return centre;
@@ -40,11 +45,6 @@ public class GymCentreOperation {
 
     public void deleteCentre(Long id) {
         System.out.println("Deleting centre with Centre Id: " + id);
-        return;
-    }
-
-    public void bookSlot(Long centreId, Long slotId) {
-        System.out.println("Booking centre "+ centreId +" with Slot Id: " + slotId);
         return;
     }
 }

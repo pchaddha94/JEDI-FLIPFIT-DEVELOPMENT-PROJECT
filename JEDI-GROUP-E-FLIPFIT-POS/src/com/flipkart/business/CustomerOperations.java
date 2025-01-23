@@ -3,11 +3,16 @@
  */
 package com.flipkart.business;
 
+import com.flipkart.DAO.BookSlotDAO;
+import com.flipkart.DAO.BookSlotDAOInterface;
 import com.flipkart.DAO.GymCustomerDAO;
 import com.flipkart.DAO.GymCustomerDAOInterface;
 import com.flipkart.bean.BookSlot;
 import com.flipkart.bean.Customer;
+import com.flipkart.bean.GymCenter;
+import com.flipkart.utils.BookingStatusType;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +22,7 @@ import java.util.Objects;
 public class CustomerOperations {
 
     private GymCustomerDAOInterface gymCustomerDAO = new GymCustomerDAO();
+    private BookSlotDAOInterface bookSlotDAO = new BookSlotDAO();
      public Customer createCustomer (String customerName, String customerAddress, String customerEmail, String customerPhone , String customerPassword )
      {
     	 // create Customer 
@@ -30,11 +36,14 @@ public class CustomerOperations {
          gymCustomerDAO.addCustomer(customer);
          return customer;
      }
-     public void bookSlot(String Gym)
+     public void bookSlot(Long customerId, Long slotId)
      {
-    	 // Book slot
-    	 System.out.println("Book Slot");
-    	 return;
+         BookSlot bookSlot = new BookSlot();
+         bookSlot.setCustomerId(customerId);
+         bookSlot.setSlotId(slotId);
+         bookSlot.setBookingStatus(BookingStatusType.CONFIRMED);
+         bookSlot.setBookingDate(new Date(System.currentTimeMillis()));
+         bookSlotDAO.addCustomerBooking(bookSlot);
      }
      public void searchGym(String location)
      {
@@ -45,8 +54,7 @@ public class CustomerOperations {
      public List<BookSlot> viewAllBooking(Long customerId)
      {
     	 // view All Booking
-    	 System.out.println("view All Booking");
-    	 return null;
+         return bookSlotDAO.getCustomerBookings(customerId);
      }
      public void cancelBookedSlot(String userName,  String slot)
      {
@@ -69,5 +77,8 @@ public class CustomerOperations {
      public boolean validUser(String email, String password){
          Customer customer = gymCustomerDAO.getCustomerByEmail(email);
          return Objects.equals(customer.getPassword(), password);
+     }
+     public List<GymCenter> viewAllGymCenter(){
+         return null;
      }
 }

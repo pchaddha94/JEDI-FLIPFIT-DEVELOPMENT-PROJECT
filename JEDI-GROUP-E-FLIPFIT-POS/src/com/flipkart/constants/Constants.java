@@ -22,10 +22,13 @@ public class Constants {
 	public static final String FETCH_PENDING_OR_APPROVED_GYM_OWNERS = "SELECT * FROM GymOwner WHERE isApproved = ?";
 	public static final String APPROVE_GYM_OWNER = "UPDATE GymOwner SET isApproved = true WHERE id = ?";
 	public static final String APPROVE_GYM_CENTER = "UPDATE GymCenter SET isApproved = 1 WHERE id = ?";
-	public static final String REGISTERING_NEW_CUSTOMER = "INSERT INTO Customer (name,address,email,phone) VALUES (?, ?, ?, ?)";
+	public static final String REGISTERING_NEW_CUSTOMER = "INSERT INTO jedi_flipfit_mysql.Customer (customer_name,customer_address,customer_email_id,customer_phone_no,customer_password) VALUES ( ?, ?, ?, ?, ?);";
 	public static final String REGISTERING_NEW_GYMOWNER = "INSERT INTO GymOwner (name,address,email,phone,gstNumber,isApproved) VALUES (?, ?, ?, ?, ?, ?)";
 	public static final String REGISTERING_NEW_USER = "INSERT INTO User (email,password,roleId) VALUES (?, ?, ?)";
 	public static final String FETCH_ALL_CUSTOMERS_USERS = "SELECT * FROM User WHERE roleId = ?";
 	public static final String MAKE_PAYMENT = "INSERT INTO Payment (cardNumber, customerEmail) values(?, ?)";
 	public static final String AUTHENTICATE_USER = "SELECT * FROM User Where email=? and password = ? and roleId=?";
+	public static final String FETCH_CUSTOMER_BY_EMAIL = "SELECT * from jedi_flipfit_mysql.Customer where customer_email_id=?";
+	public static final String FETCH_BOOKINGS_BY_CUSTOMER_ID = "SELECT * from jedi_flipfit_mysql.book_slot where customer_id=?;";
+	public static final String ADD_SLOT_BOOKING = "INSERT INTO jedi_flipfit_mysql.bookslot(customer_id,slot_id,booking_date,booking_status) VALUES(?,?,?,?)";
 }
