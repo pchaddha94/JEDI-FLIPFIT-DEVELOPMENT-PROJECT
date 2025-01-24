@@ -9,6 +9,7 @@ import com.flipkart.bean.Slot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GymCentreOperation {
     private SlotsDAOInterface slotsDAO=new SlotsDAO();
@@ -58,5 +59,17 @@ public class GymCentreOperation {
     public List<GymCenter> getAllGymCenters() {
         System.out.println("Getting all the gym centers");
         return gymCenterDAO.getAllGymCenters();
+    }
+
+    public List<GymCenter> getAllGymCentersByGymOwnerId(Long gymOwnerId) {
+        System.out.println("Getting all the gym centers by gym owner id");
+        List<GymCenter> gymCenters = getAllGymCenters();
+        List<GymCenter> gymCentersByGymOwnerId = new ArrayList<>();
+        for(GymCenter gymCenter : gymCenters){
+            if(Objects.equals(gymCenter.getGymOwnerId(), gymOwnerId)){
+                gymCentersByGymOwnerId.add(gymCenter);
+            }
+        }
+        return gymCentersByGymOwnerId;
     }
 }

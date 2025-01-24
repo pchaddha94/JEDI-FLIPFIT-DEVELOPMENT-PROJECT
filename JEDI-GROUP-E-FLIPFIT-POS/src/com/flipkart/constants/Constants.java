@@ -48,4 +48,5 @@ public class Constants {
 	public static final String GET_FEEDBACK_BY_USERID = "SELECT * FROM feedback WHERE userId = ?";
 	public static final String ADD_FEEDBACK = "INSERT INTO feedback (userId, comments, rating, centreId) VALUES (?, ?, ?, ?)";
 	public static final String GET_USER_ROLE = "SELECT user_id, user_role FROM jedi_flipfit_mysql.user_role WHERE user_email = ?";
+	public static final String GET_ALL_GYM_BOOKINGS = "SELECT * from jedi_flipfit_mysql.book_slot where ";
 }

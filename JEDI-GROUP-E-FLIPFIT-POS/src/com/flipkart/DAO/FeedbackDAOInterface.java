@@ -20,4 +20,6 @@ public interface FeedbackDAOInterface {
     // Delete feedback by ID
     boolean deleteFeedback(Long feedbackId);
 
+    List<Feedback> getAllFeedbackOfGymCenter(Long gymCenterId);
+
 }
