@@ -1,6 +1,7 @@
 package com.flipkart.DAO;
 
 import com.flipkart.bean.Feedback;
+import com.flipkart.constants.Constants;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,9 +14,8 @@ public class FeedbackDAO implements FeedbackDAOInterface {
 
     @Override
     public boolean addFeedback(Feedback feedback) {
-        String query = "INSERT INTO feedback (userId, comments, rating, centreId) VALUES (?, ?, ?, ?)";
         try (Connection connection = DB_utils.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(Constants.ADD_FEEDBACK)) {
             preparedStatement.setLong(1, feedback.getUserId());
             preparedStatement.setString(2, feedback.getComments());
             preparedStatement.setInt(3, feedback.getRating());
@@ -29,11 +29,10 @@ public class FeedbackDAO implements FeedbackDAOInterface {
 
     @Override
     public List<Feedback> getAllFeedback() {
-        String query = "SELECT * FROM feedback";
         List<Feedback> feedbackList = new ArrayList<>();
         try (Connection connection = DB_utils.getConnection();
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+             ResultSet resultSet = statement.executeQuery(Constants.GET_FEEDBACK)) {
             while (resultSet.next()) {
                 feedbackList.add(mapRowToFeedback(resultSet));
             }
@@ -45,10 +44,10 @@ public class FeedbackDAO implements FeedbackDAOInterface {
 
     @Override
     public List<Feedback> getFeedbackByUserId(Long userId) {
-        String query = "SELECT * FROM feedback WHERE userId = ?";
+        
         List<Feedback> feedbackList = new ArrayList<>();
         try (Connection connection = DB_utils.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(Constants.GET_FEEDBACK_BY_USERID)) {
             preparedStatement.setLong(1, userId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {

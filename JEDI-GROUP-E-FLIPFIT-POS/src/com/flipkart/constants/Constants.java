@@ -44,4 +44,8 @@ public class Constants {
 	public static final String ADD_ADMIN = "INSERT INTO jedi_flipfit_mysql.gym_admin (admin_name, admin_email_id, admin_phone_no, admin_password) VALUES (?,?,?,?)";
 	public static final String GET_ADMIN_BY_EMAIL = "SELECT * from jedi_flipfit_mysql.gym_admin where admin_email_id=?";
 	public static final String ADD_GYM_OWNER = "INSERT INTO jedi_flipfit_mysql.gym_owner (owner_name, owner_id,owner_pan,owner_phone_no,owner_address,is_approved,owner_email_id,password) VALUES (?,?,?,?,?,?,?,?)";
+	public static final String GET_FEEDBACK = "SELECT * FROM feedback";
+	public static final String GET_FEEDBACK_BY_USERID = "SELECT * FROM feedback WHERE userId = ?";
+	public static final String ADD_FEEDBACK = "INSERT INTO feedback (userId, comments, rating, centreId) VALUES (?, ?, ?, ?)";
+	public static final String GET_USER_ROLE = "SELECT user_id, user_role FROM jedi_flipfit_mysql.user_role WHERE user_email = ?";
 }

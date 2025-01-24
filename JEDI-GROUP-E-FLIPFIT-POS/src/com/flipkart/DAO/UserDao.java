@@ -15,8 +15,7 @@ public class UserDao implements UserDaoInterface{
 	{
 		try{
             Connection connection = DB_utils.getConnection();
-            String query = "SELECT user_id, user_role FROM jedi_flipfit_mysql.user_role WHERE user_email = ?";
-            PreparedStatement stmt = connection.prepareStatement(query);
+            PreparedStatement stmt = connection.prepareStatement(Constants.GET_USER_ROLE);
             stmt.setString(1, userEmail);
             ResultSet rs = stmt.executeQuery();
             
