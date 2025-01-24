@@ -33,7 +33,7 @@ public class BookSlotDAO implements BookSlotDAOInterface{
             }
             return bookSlots;
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return null;
     }
@@ -52,7 +52,7 @@ public class BookSlotDAO implements BookSlotDAOInterface{
             System.out.println("Booking slot added successfully");
             return;
             } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         System.out.println("Booking slot failed");
     }

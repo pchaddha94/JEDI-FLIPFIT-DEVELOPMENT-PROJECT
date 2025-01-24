@@ -102,10 +102,8 @@ public class PaymentDAO implements PaymentDaoInterface{
          statement.executeUpdate();
          statement.close();
 
-     } catch(SQLException sqlExcep) {
-         System.out.println(sqlExcep);
      } catch(Exception excep) {
-         excep.printStackTrace();
+         System.out.println(excep.getMessage());
      }
  }
  
