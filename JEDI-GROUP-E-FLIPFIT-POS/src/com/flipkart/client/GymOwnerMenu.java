@@ -1,8 +1,6 @@
 package com.flipkart.client;
 
-import com.flipkart.DAO.FeedbackDAO;
-import com.flipkart.DAO.FeedbackDAOInterface;
-import com.flipkart.DAO.UserDao;
+import com.flipkart.DAO.*;
 import com.flipkart.bean.*;
 import com.flipkart.business.*;
 
@@ -19,6 +17,7 @@ public class GymOwnerMenu {
 	
 	private GymOwnerOperation gymOwnerOperations=new GymOwnerOperation();
 	private UserDao userDao=new UserDao();
+	private GymCentreOperation gymCentreOperation=new GymCentreOperation();
 	private FeedbackDAOInterface feedbackDao=new FeedbackDAO();
 	Scanner scanner = new Scanner(System.in);
 	
@@ -66,7 +65,7 @@ public class GymOwnerMenu {
     public void gymOwnerClientMainPage(String gymOwnerName, Long ownerId) {
     	while(true) {
     		System.out.println("" +
-                    "0. View all Bookings\n" +
+					"0. Get all gym center\n" +
                     "1. Add new Gym Center\n" +
                     "2. Add Slots to a Gym Centre\n" +
                     "3. Remove centre owned\n"+
@@ -77,9 +76,16 @@ public class GymOwnerMenu {
     		int choice = scanner.nextInt();
 			scanner.nextLine();
     		switch(choice) {
-    			case 0:
-    				System.out.println("All bookings displayed\n");
-    				break;
+				case 0:
+					List<GymCenter> gymCenters = gymCentreOperation.getAllGymCentersByGymOwnerId(ownerId);
+					gymCenters.forEach(gymCenter -> {
+						System.out.println("Gym Center name: "+ gymCenter.getName());
+						System.out.println("Gym email id: "+ gymCenter.getEmail());
+						System.out.print("Approval status: "+gymCenter.isIs_approved());
+						System.out.println("Center location: "+gymCenter.getLocation());
+						System.out.println("\n");
+					});
+					break;
     			case 1:
     				System.out.println("Enter the Gym Name");
     				String name = scanner.nextLine();
