@@ -16,19 +16,25 @@ public class FlipFitApplication {
 
 
     private static void mainPage(){
-        System.out.println("1. Login\n2. Registration\n3. Change Password\n4. Exit");
+        System.out.println("1. Login\n2. Register as Admin\n3. Register as Customer\n4. Register as Gym Owner\n5. Change Passowrd\n6. Exit");
         int choice = scanner.nextInt();
         switch (choice) {
             case 1:
                 login();
                 break;
             case 2:
-                registration();
+                registration("Admin");
                 break;
             case 3:
+            	registration("Customer");
+            	break;
+            case 4:
+            	registration("Owner");
+            	break;
+            case 5:
                 changePassword();
                 break;
-            case 4:
+            case 6:
                 System.out.println("Thanks for visiting!");
                 return;
             default:
@@ -74,12 +80,12 @@ public class FlipFitApplication {
         }
     }
 
-    private static void registration(){
+    private static void registration(String role){
         try {
-            System.out.println("Enter your role");
-            UserRoleType role = UserRoleType.valueOf(scanner.next().toUpperCase());
+//            System.out.println("Enter your role");
+            UserRoleType roleType = UserRoleType.valueOf(role.toUpperCase());
 
-            switch (role){
+            switch (roleType){
                 case ADMIN:
                     adminClient.adminRegister();
                     break;

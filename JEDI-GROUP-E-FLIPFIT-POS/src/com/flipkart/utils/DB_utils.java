@@ -15,7 +15,7 @@ public class DB_utils {
             if (Objects.isNull(connection)) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 String filePath = new File("").getAbsolutePath();
-                filePath=filePath.concat("/src/config.properties");
+                filePath=filePath.concat("/JEDI-GROUP-E-FLIPFIT-POS/src/config.properties");
                 FileInputStream inputStream = new FileInputStream(filePath);
                 Properties newProp = new Properties();
                 newProp.load(inputStream);
