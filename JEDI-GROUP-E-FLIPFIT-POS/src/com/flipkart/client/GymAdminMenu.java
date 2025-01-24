@@ -6,6 +6,7 @@ import com.flipkart.business.AdminOperation;
 import com.flipkart.bean.GymAdmin;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.GymOwner;
+import com.flipkart.exceptions.UserNotFoundException;
 
 import java.util.List;
 import java.util.Scanner;
@@ -15,7 +16,7 @@ public class GymAdminMenu {
     private AdminDaoInterface adminDao = new AdminDao();
     private Scanner in = new Scanner(System.in);
 
-    public boolean adminLogin(String email, String password) {
+    public boolean adminLogin(String email, String password) throws UserNotFoundException {
         if (adminOperation.validUser(email, password)) {
             System.out.println("Welcome " + email);
             System.out.println("Successfully logged in");
@@ -41,12 +42,7 @@ public class GymAdminMenu {
         System.out.println("Enter your Phone");
         String phone = in.next();
 
-        GymAdmin gymAdmin = new GymAdmin();
-        gymAdmin.setAdminName(userName);
-        gymAdmin.setPassword(password);
-        gymAdmin.setPhone(phone);
-        gymAdmin.setAdminEmailAddress(email);
-        adminDao.addAdmin(gymAdmin);
+        adminOperation.createAdmin(userName, password, email, phone);
         System.out.println("Admin added successfully!");
 
         return true;

@@ -9,6 +9,7 @@ import com.flipkart.bean.Slot;
 import com.flipkart.business.GymCentreOperation;
 import com.flipkart.business.CustomerOperations;
 import com.flipkart.business.FeedbackOperation;
+import com.flipkart.exceptions.UserNotFoundException;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,7 +21,7 @@ public class GymCustomerMenu {
     private GymCustomerDAOInterface gymCustomerDAO = new GymCustomerDAO();
     private Scanner scanner = new Scanner(System.in);
 
-    public boolean customerLogin(String email, String password) {
+    public boolean customerLogin(String email, String password) throws UserNotFoundException {
         if(customerOperation.validUser(email, password)) {
             System.out.println("Welcome " + email);
             System.out.println("Successfully logged in");

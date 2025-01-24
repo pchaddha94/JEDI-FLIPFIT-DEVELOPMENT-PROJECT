@@ -2,9 +2,11 @@ package com.flipkart.business;
 
 import com.flipkart.DAO.AdminDao;
 import com.flipkart.bean.*;
+import com.flipkart.exceptions.UserNotFoundException;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AdminOperation {
 
@@ -17,20 +19,19 @@ public class AdminOperation {
     
     /**
      * Creates a new GymAdmin object with the provided details.
-     * @param adminId Unique ID of the admin
      * @param adminName Name of the admin
      * @param adminEmail Email address of the admin
      * @param adminPhone Contact number of the admin
      * @param password Password for admin login
      * @return A GymAdmin object containing the given details
      */
-    public GymAdmin createAdmin(long adminId, String adminName, String adminEmail, String adminPhone, String password) {
+    public GymAdmin createAdmin( String adminName, String adminEmail, String adminPhone, String password) {
         GymAdmin admin = new GymAdmin();
-        admin.setAdminId(adminId);
         admin.setAdminName(adminName);
         admin.setAdminEmailAddress(adminEmail);
         admin.setPhone(adminPhone);
         admin.setPassword(password);
+        adminDao.addAdmin(admin);
         return admin;
     }
 
@@ -97,9 +98,12 @@ public class AdminOperation {
      * @param password Password entered by the admin
      * @return true if credentials are valid (TODO: Implement verification logic)
      */
-    public boolean validUser(String adminEmail, String password) {
-        // TODO: Implement actual verification logic
-        return true;
+    public boolean validUser(String adminEmail, String password) throws UserNotFoundException {
+        GymAdmin gymAdmin = getAdminByEmail(adminEmail);
+        if(Objects.isNull(gymAdmin)) {
+            throw new UserNotFoundException();
+        }
+        return !Objects.isNull(gymAdmin.getPassword()) && !Objects.equals(gymAdmin.getPassword(), password);
     }
     
     /**
@@ -108,15 +112,6 @@ public class AdminOperation {
      * @return A GymAdmin object with pre-set details (TODO: Fetch from database)
      */
     public GymAdmin getAdminByEmail(String email) {
-        GymAdmin admin = new GymAdmin();
-        admin.setAdminName("Flipfit Admin");
-        admin.setAdminEmailAddress("flipfit.admin@flipkart.com");
-        admin.setPhone("123456789");
-        admin.setPassword("password");
-        return admin;
-    }
-    
-    public static void main(String[] args) {
-        // Main method for testing or execution entry point (if required)
+        return adminDao.getAdminByEmail(email);
     }
 }

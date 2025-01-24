@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 
 import com.flipkart.bean.UserRole;
 import com.flipkart.constants.Constants;
+import com.flipkart.exceptions.UserNotFoundException;
 import com.flipkart.utils.DB_utils;
 import com.flipkart.utils.UserRoleType;
 
 public class UserDao implements UserDaoInterface{
 	
-	public UserRole getUser(String userEmail)
-	{
+	public UserRole getUser(String userEmail) throws UserNotFoundException {
 		try{
             Connection connection = DB_utils.getConnection();
             PreparedStatement stmt = connection.prepareStatement(Constants.GET_USER_ROLE);
@@ -34,7 +34,7 @@ public class UserDao implements UserDaoInterface{
             System.out.println(e.getMessage());
         }
         System.out.println("Invalid User Email");
-		return null;
+		throw new UserNotFoundException();
 	}
 
     public void addUserRole(UserRole userRole){

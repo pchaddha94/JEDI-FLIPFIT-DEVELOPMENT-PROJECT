@@ -11,6 +11,7 @@ import com.flipkart.DAO.GymCustomerDAOInterface;
 import com.flipkart.bean.BookSlot;
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymCenter;
+import com.flipkart.exceptions.UserNotFoundException;
 import com.flipkart.utils.BookingStatusType;
 
 import java.sql.Date;
@@ -105,9 +106,13 @@ public class CustomerOperations {
      * @param password Password entered
      * @return true if valid user, false otherwise
      */
-    public boolean validUser(String email, String password) {
+    public boolean validUser(String email, String password) throws UserNotFoundException {
         Customer customer = gymCustomerDAO.getCustomerByEmail(email);
-        return Objects.equals(customer.getPassword(), password);
+        if(Objects.isNull(customer)) {
+            throw new UserNotFoundException();
+        }
+
+        return Objects.isNull(customer.getPassword()) && !Objects.equals(customer.getPassword(), password);
     }
 
     /**

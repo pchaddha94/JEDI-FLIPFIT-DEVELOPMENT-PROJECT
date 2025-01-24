@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.flipkart.DAO.UserDao;
 import com.flipkart.DAO.UserDaoInterface;
+import com.flipkart.exceptions.UserNotFoundException;
 import com.flipkart.utils.UserRoleType;
 
 
@@ -75,8 +76,8 @@ public class FlipFitApplication {
                     System.out.println("Invalid Option Selected");
                     break;
             }
-        }catch (Exception e){  //TODO change exceptions
-            System.out.println("Invalid Option Selected");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
