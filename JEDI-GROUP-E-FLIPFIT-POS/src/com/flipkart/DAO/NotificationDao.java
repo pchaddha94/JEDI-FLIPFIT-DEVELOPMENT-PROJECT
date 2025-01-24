@@ -21,8 +21,8 @@ public class NotificationDao implements NotificationDaoInterface {
             preparedStatement.setLong(2, notification.getReceiverID());
             preparedStatement.setString(3, notification.getMessage());
             return preparedStatement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return false;
     }
@@ -39,8 +39,8 @@ public class NotificationDao implements NotificationDaoInterface {
                     return mapRowToNotification(resultSet);
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return null;
     }
@@ -55,8 +55,8 @@ public class NotificationDao implements NotificationDaoInterface {
             while (resultSet.next()) {
                 notifications.add(mapRowToNotification(resultSet));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return notifications;
     }
@@ -70,13 +70,13 @@ public class NotificationDao implements NotificationDaoInterface {
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, notificationID);
             return preparedStatement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return false;
     }
 
-    private Notification mapRowToNotification(ResultSet resultSet) throws SQLException {
+    private Notification mapRowToNotification(ResultSet resultSet) throws Exception {
         Notification notification = new Notification();
         notification.setNotificationID(resultSet.getLong("notificationID"));
         notification.setSenderID(resultSet.getLong("senderID"));

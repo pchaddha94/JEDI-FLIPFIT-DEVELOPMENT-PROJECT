@@ -30,7 +30,7 @@ public class SlotsDAO implements SlotsDAOInterface {
             return slots;
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return null;
     }
@@ -48,7 +48,7 @@ public class SlotsDAO implements SlotsDAOInterface {
             System.out.println("Slot added successfully");
             return;
         }catch (Exception e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         System.out.println("Slot added fail");
     }

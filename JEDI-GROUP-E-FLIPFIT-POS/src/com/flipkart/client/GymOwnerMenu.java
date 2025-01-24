@@ -121,6 +121,7 @@ public class GymOwnerMenu {
 					slot.setSlotTimings(slotTimings);
 					slot.setPrice(Integer.parseInt(price));
 					gymOwnerOperations.addSlot(slot);
+					System.out.println("Slot added successfully\n");
     				break;
     			case 3:
     				System.out.println("Enter the centre id");

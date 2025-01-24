@@ -4,7 +4,6 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,10 +40,8 @@ public class AdminDao implements AdminDaoInterface {
                 gymCenter.setGymOwnerId(rs.getLong("owner_id"));
                 pendingReq.add(gymCenter);
             }
-        } catch (SQLException sqlExcep){
-            System.out.println(sqlExcep);
         } catch (Exception excep){
-            excep.printStackTrace();
+            System.out.println(excep.getMessage());
         }
         return pendingReq;
     }
@@ -67,10 +64,8 @@ public class AdminDao implements AdminDaoInterface {
 
                 pendingGymOwnerReq.add(gymOwner);
             }
-        } catch(SQLException sqlExcep) {
-            System.out.println(sqlExcep);
         } catch(Exception excep) {
-            excep.printStackTrace();
+            System.out.println(excep.getMessage());
         }
         return pendingGymOwnerReq;
     }
@@ -93,10 +88,8 @@ public class AdminDao implements AdminDaoInterface {
                 gymCenter.setGymOwnerId(rs.getLong("owner_id"));
                 approvedReq.add(gymCenter);
             }
-        } catch (SQLException sqlExcep){
-            System.out.println(sqlExcep);
         } catch (Exception excep){
-            excep.printStackTrace();
+            System.out.println(excep.getMessage());
         }
         return approvedReq;
     }
@@ -121,10 +114,8 @@ public class AdminDao implements AdminDaoInterface {
 
                 approvedGymOwnerReq.add(gymOwner);
             }
-        } catch(SQLException sqlExcep) {
-            System.out.println(sqlExcep);
         } catch(Exception excep) {
-            excep.printStackTrace();
+            System.out.println(excep.getMessage());
         }
         return approvedGymOwnerReq;
     }
@@ -138,10 +129,8 @@ public class AdminDao implements AdminDaoInterface {
             statement.setLong(1, gymOwnerId);
             result = statement.executeUpdate();
             statement.close();
-        } catch (SQLException sqlExcep) {
-            System.out.println(sqlExcep);
         } catch (Exception excep) {
-            excep.printStackTrace();
+            System.out.println(excep.getMessage());
         }
         if(result == 1){
             return true;
@@ -158,10 +147,8 @@ public class AdminDao implements AdminDaoInterface {
             statement.setLong(1,gymCenterId);
             result = statement.executeUpdate();
             statement.close();
-        } catch(SQLException sqlExcep) {
-            System.out.println(sqlExcep);
-        } catch(Exception excep) {
-            excep.printStackTrace();
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
         }
         if(result == 1){
             return true;
@@ -188,8 +175,8 @@ public class AdminDao implements AdminDaoInterface {
             userDao.addUserRole(userRole);
             System.out.println("Added Admin Successfully");
             return;
-        }catch (SQLException e){
-            e.printStackTrace();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
         System.out.println("Add Admin Failed");
     }
@@ -209,8 +196,8 @@ public class AdminDao implements AdminDaoInterface {
                 gymAdmin.setPassword(resultSet.getString("admin_password"));
                 return gymAdmin;
             }
-        }catch (SQLException e){
-            e.printStackTrace();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
         System.out.println("Get Admin By Email failed");
         return null;

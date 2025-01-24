@@ -39,7 +39,7 @@ public class OwnerDAO implements OwnerDAOInterface {
             System.out.println("Owner registered successfully");
             return;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         System.out.println("Owner registration failed");
     }
@@ -74,7 +74,7 @@ public class OwnerDAO implements OwnerDAOInterface {
             }
         }
         catch(Exception e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return gymOwners;
     }
@@ -99,7 +99,7 @@ public class OwnerDAO implements OwnerDAOInterface {
             }
         }
         catch(Exception e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return gymOwner;
     }
@@ -118,7 +118,7 @@ public class OwnerDAO implements OwnerDAOInterface {
             stmt.executeUpdate();
         }
         catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -142,7 +142,7 @@ public class OwnerDAO implements OwnerDAOInterface {
                 centers.add(center);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return centers;
     }
@@ -168,7 +168,7 @@ public class OwnerDAO implements OwnerDAOInterface {
             }
         }
         catch (Exception e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return centers;
     }
@@ -203,7 +203,7 @@ public class OwnerDAO implements OwnerDAOInterface {
                 return gymOwner;
             }
         }catch (Exception e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         System.out.println("Invalid Email");
         return null;

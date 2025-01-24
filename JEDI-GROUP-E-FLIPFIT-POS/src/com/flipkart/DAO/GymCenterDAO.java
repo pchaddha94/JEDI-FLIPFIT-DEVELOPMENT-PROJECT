@@ -27,7 +27,7 @@ public class GymCenterDAO implements GymCenterDAOInterface{
             System.out.println("Gym center added successfully");
             return;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         System.out.println("Gym center failed");
     }
@@ -53,7 +53,7 @@ public class GymCenterDAO implements GymCenterDAOInterface{
             return gymCenters;
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         System.out.println("Fetching gym center failed.");
         return List.of();

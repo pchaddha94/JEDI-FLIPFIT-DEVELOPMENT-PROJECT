@@ -24,8 +24,8 @@ public class FeedbackDAO implements FeedbackDAOInterface {
             preparedStatement.setInt(3, feedback.getRating());
             preparedStatement.setLong(4, feedback.getCentreId());
             return preparedStatement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return false;
     }
@@ -40,8 +40,8 @@ public class FeedbackDAO implements FeedbackDAOInterface {
             while (resultSet.next()) {
                 feedbackList.add(mapRowToFeedback(resultSet));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return feedbackList;
     }
@@ -58,8 +58,8 @@ public class FeedbackDAO implements FeedbackDAOInterface {
                     feedbackList.add(mapRowToFeedback(resultSet));
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return feedbackList;
     }
@@ -73,8 +73,8 @@ public class FeedbackDAO implements FeedbackDAOInterface {
             if (resultSet.next()) {
                 return resultSet.getDouble("avgRating");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return 0.0;
     }
@@ -86,8 +86,8 @@ public class FeedbackDAO implements FeedbackDAOInterface {
              PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setLong(1, feedbackId);
             return preparedStatement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return false;
     }

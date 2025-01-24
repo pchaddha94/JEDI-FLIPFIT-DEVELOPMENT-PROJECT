@@ -31,7 +31,7 @@ public class GymCustomerDAO implements GymCustomerDAOInterface{
             userDao.addUserRole(userRole);
         }
         catch (Exception e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -52,7 +52,7 @@ public class GymCustomerDAO implements GymCustomerDAOInterface{
             }
             return customer;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return null;
     }
