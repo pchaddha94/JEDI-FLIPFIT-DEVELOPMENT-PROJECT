@@ -38,6 +38,7 @@ public class AdminOperation {
 	
 	public boolean approveGymCenter(long centerId)
 	{
+        adminDao.approveGymRegistration(centerId);
 		System.out.println("Center with ID: "+centerId+" is approved");
 		return true;
 	}

@@ -31,7 +31,7 @@ public class GymCentreOperation {
 
     public Slot addSlot(Long centreId, Slot slot) {
         //Add slot to the center
-        System.out.println("Adding slot " + slot + " to Centre " + centreId);
+        slotsDAO.addSlot(slot);
         return slot;
     }
 

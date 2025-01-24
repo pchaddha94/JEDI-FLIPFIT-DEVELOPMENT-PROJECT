@@ -78,7 +78,7 @@ public class PaymentOperation {
         System.out.println("Refund processed successfully");
     }
     
-    PaymentDAO paymentDao = new PaymentDaoInterface();
+    PaymentDaoInterface paymentDao = new PaymentDAO();
 	public void makePayment(Long cardNumber,String customerEmail) {
 		paymentDao.makePayment(cardNumber, customerEmail);
 		System.out.println("Payment Successful .....");

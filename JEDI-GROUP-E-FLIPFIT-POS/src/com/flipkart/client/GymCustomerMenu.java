@@ -75,7 +75,13 @@ public class GymCustomerMenu {
                     System.out.println("Please enter gym centre ID");
                     Long centreId = scanner.nextLong();
                     List<Slot> slots = centreOperation.getAllSlots(centreId);
-                    System.out.println("Available slots:\n1. Slot 1\n2. Slot 2\n3. Slot 3");
+                    slots.forEach(slot -> {
+                        System.out.println("Slot id: "+ slot.getSlotID());
+                        System.out.println("Center id of the slot: "+slot.getCentreId());
+                        System.out.println("Slot timings: "+slot.getSlotTimings());
+                        System.out.println("Price: "+slot.getPrice());
+                        System.out.println("\n");
+                    });
                     break;
                 case 3:
                     System.out.println("Please enter slot Id");

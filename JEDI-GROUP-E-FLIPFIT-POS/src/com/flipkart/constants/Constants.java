@@ -29,7 +29,7 @@ public class Constants {
 	
 	public static final String APPROVE_GYM_OWNER = "UPDATE gym_owner SET is_approved = true WHERE owner_id = ?";
 	
-	public static final String APPROVE_GYM_CENTER = "UPDATE GymCenter SET isApproved = 1 WHERE id = ?";
+	public static final String APPROVE_GYM_CENTER = "UPDATE gym_center SET is_approved = 1 WHERE center_id = ?";
 	public static final String REGISTERING_NEW_CUSTOMER = "INSERT INTO jedi_flipfit_mysql.Customer (customer_name,customer_address,customer_email_id,customer_phone_no,customer_password) VALUES ( ?, ?, ?, ?, ?);";
 	public static final String REGISTERING_NEW_GYMOWNER = "INSERT INTO GymOwner (name,address,email,phone,gstNumber,isApproved) VALUES (?, ?, ?, ?, ?, ?)";
 	public static final String REGISTERING_NEW_USER = "INSERT INTO User (email,password,roleId) VALUES (?, ?, ?)";
