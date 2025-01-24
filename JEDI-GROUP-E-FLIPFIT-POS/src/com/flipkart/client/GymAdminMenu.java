@@ -47,6 +47,8 @@ public class GymAdminMenu {
         gymAdmin.setPhone(phone);
         gymAdmin.setAdminEmailAddress(email);
         adminDao.addAdmin(gymAdmin);
+        System.out.println("Admin added successfully!");
+       
         return true;
     }
 
@@ -60,6 +62,7 @@ public class GymAdminMenu {
         System.out.println("Enter the gym Id: ");
         Long gymId = in.nextLong();
         adminOperation.approveGymCenter(gymId);
+        System.out.println("Gym added successfully !");
     }
 
     public void viewPendingCenters() {
