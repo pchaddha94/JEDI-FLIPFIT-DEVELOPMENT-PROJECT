@@ -13,7 +13,7 @@ public class FeedbackDAO implements FeedbackDAOInterface {
 
     @Override
     public boolean addFeedback(Feedback feedback) {
-        String query = "INSERT INTO feedback (userId, comments, rating, centreId) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO feedback (user_id, comments, rating, center_id) VALUES (?, ?, ?, ?)";
         try (Connection connection = DB_utils.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, feedback.getUserId());

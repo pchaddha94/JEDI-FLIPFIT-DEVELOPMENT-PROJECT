@@ -110,11 +110,6 @@ public class GymCustomerMenu {
                     return;
                 case 6:
                 	FeedbackOperation feedbackOperation = new FeedbackOperation();
-                    Scanner scanner = new Scanner(System.in);
-
-                    System.out.println("Enter User ID:");
-                    Long userId = scanner.nextLong();
-
                     System.out.println("Enter Centre ID:");
                     centreId = scanner.nextLong();
 
@@ -125,11 +120,13 @@ public class GymCustomerMenu {
 
                     System.out.println("Enter Rating (1-5):");
                     int rating = scanner.nextInt();
+
+                    scanner.nextLine();
                     
                     if (rating < 1 || rating > 5) {
                         System.out.println("Invalid rating! Please enter a value between 1 and 5.");
                     } else {
-                        feedbackOperation.addFeedback(userId, comments, rating, centreId);
+                        feedbackOperation.addFeedback(customerId, comments, rating, centreId);
                     }
                 default:
                     System.out.println("Invalid option");
