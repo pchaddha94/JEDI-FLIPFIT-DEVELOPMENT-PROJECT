@@ -2,6 +2,7 @@ package com.flipkart.client;
 
 import com.flipkart.DAO.GymCustomerDAO;
 import com.flipkart.DAO.GymCustomerDAOInterface;
+import com.flipkart.bean.BookSlot;
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
@@ -24,7 +25,7 @@ public class GymCustomerMenu {
             System.out.println("Welcome " + email);
             System.out.println("Successfully logged in");
             Customer customer = gymCustomerDAO.getCustomerByEmail(email);
-            customerMainPage(customer.getCustomerName());
+            customerMainPage(customer.getCustomerName(),customer.getCustomerId());
         }
         else{
             System.out.println("Invalid username or password");
@@ -51,10 +52,9 @@ public class GymCustomerMenu {
         String address = scanner.next();
 
         Customer customer = customerOperation.createCustomer(username, address,email,phoneNumber,password);
-        customerMainPage(customer.getCustomerName());
     }
 
-    public void customerMainPage(String userName) {
+    public void customerMainPage(String userName,Long customerId) {
         System.out.println("Welcome " + userName + ". Please choose your option: ");
         Customer customer = gymCustomerDAO.getCustomerByEmail(userName);
         while(true){
@@ -87,10 +87,17 @@ public class GymCustomerMenu {
                     System.out.println("Please enter slot Id");
                     Long slotId = scanner.nextLong();
 
-                    customerOperation.bookSlot(customer.getCustomerId(),slotId);
+                    customerOperation.bookSlot(customerId,slotId);
                     break;
                 case 4:
-                    System.out.println(customerOperation.viewAllBooking(1L));
+                    List<BookSlot> bookSlots = customerOperation.viewAllBooking(customerId);
+                    bookSlots.forEach(bookSlot -> {
+                        System.out.println("Booking id: "+ bookSlot.getBookingId());
+                        System.out.println("Slot id: "+ bookSlot.getSlotId());
+                        System.out.println("Booking date: "+ bookSlot.getBookingDate());
+                        System.out.println("Booking status: "+ bookSlot.getBookingStatus());
+                        System.out.println("\n");
+                    });
                     break;
                 case 5:
                     System.out.println("Please enter slot");

@@ -44,6 +44,7 @@ public class GymCustomerDAO implements GymCustomerDAOInterface{
             ResultSet rs = stmt.executeQuery();
             Customer customer = new Customer();
             while(rs.next()){
+                customer.setCustomerId(rs.getLong("customer_id"));
                 customer.setCustomerEmailAddress(rs.getString("customer_email_id"));
                 customer.setPassword(rs.getString("customer_password"));
                 customer.setCustomerName(rs.getString("customer_name"));
