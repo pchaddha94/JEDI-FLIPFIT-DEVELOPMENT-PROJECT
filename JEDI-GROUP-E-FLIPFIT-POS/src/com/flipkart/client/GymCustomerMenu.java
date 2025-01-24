@@ -52,6 +52,7 @@ public class GymCustomerMenu {
         String address = scanner.next();
 
         Customer customer = customerOperation.createCustomer(username, address,email,phoneNumber,password);
+        System.out.println("Registration successful\n");
     }
 
     public void customerMainPage(String userName,Long customerId) {

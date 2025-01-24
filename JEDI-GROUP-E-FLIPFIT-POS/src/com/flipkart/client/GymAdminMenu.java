@@ -47,6 +47,7 @@ public class GymAdminMenu {
         gymAdmin.setPhone(phone);
         gymAdmin.setAdminEmailAddress(email);
         adminDao.addAdmin(gymAdmin);
+        System.out.println("Registration successful!\n");
         return true;
     }
 

@@ -58,7 +58,7 @@ public class GymOwnerMenu {
         System.out.println("Enter your address");
         String address = scanner.next();
 
-        System.out.println("Register successful");
+        System.out.println("Register successful\n");
         
         GymOwner gymOwner=gymOwnerOperations.createGymOwner( userName, email,password, phone, panNumber, true, address);
     }
