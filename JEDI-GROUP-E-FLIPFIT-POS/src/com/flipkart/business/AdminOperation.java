@@ -38,6 +38,7 @@ public class AdminOperation {
 	
 	public boolean approveGymCenter(long centerId)
 	{
+        adminDao.approveGymRegistration(centerId);
 		System.out.println("Center with ID: "+centerId+" is approved");
 		return true;
 	}
@@ -49,15 +50,23 @@ public class AdminOperation {
         
     }
 
-
     public List<GymOwner> viewPendingGymOwners(){
-        System.out.println("Viewing pending Gym Owner Approvals: ");
        return adminDao.viewPendingGymOwnerRequests();
     }
+    
+    public List<GymOwner> viewApprovedGymOwners(){
+       return adminDao.viewAllApprovedGymOnwers();
+    }
+    
+    public List<GymCenter> viewApprovedGymCentres(){
+       return adminDao.viewAllApprovedGyms();
+    }
+    
     public boolean validUser(String adminEmail, String password){
     	//verification part TODO
         return true;
     }
+    
     public GymAdmin getAdminByEmail(String email) {
         GymAdmin admin = new GymAdmin();
         admin.setAdminName("Flipfit Admin");

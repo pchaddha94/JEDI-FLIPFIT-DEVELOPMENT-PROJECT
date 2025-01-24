@@ -89,7 +89,7 @@ public class AdminDao implements AdminDaoInterface {
                 gymCenter.setName(rs.getString("center_name"));
                 gymCenter.setEmail(rs.getString("center_email_id"));
                 gymCenter.setLocation(rs.getString("center_location"));
-                gymCenter.setIs_approved(false);
+                gymCenter.setIs_approved(true);
                 gymCenter.setGymOwnerId(rs.getLong("owner_id"));
                 approvedReq.add(gymCenter);
             }
@@ -112,7 +112,7 @@ public class AdminDao implements AdminDaoInterface {
             	GymOwner gymOwner = new GymOwner();
                 gymOwner.setOwnerId(rs.getLong("owner_id"));
                 gymOwner.setOwnerAddress(rs.getString("owner_address"));
-                gymOwner.setApproved(false);
+                gymOwner.setApproved(true);
                 gymOwner.setOwnerPhone(rs.getString("owner_phone_no"));
                 gymOwner.setOwnerPanNum(rs.getString("owner_pan"));
                 gymOwner.setOwnerName(rs.getString("owner_name"));

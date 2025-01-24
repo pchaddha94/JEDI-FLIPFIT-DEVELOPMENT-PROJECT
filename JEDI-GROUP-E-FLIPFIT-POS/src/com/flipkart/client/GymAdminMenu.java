@@ -87,6 +87,33 @@ public class GymAdminMenu {
         }
         System.out.println("**********************************");
     }
+    
+    public void viewApprovedCenters() {
+        List<GymCenter> gymDetails = adminOperation.viewApprovedGymCentres();
+        
+        System.out.println("--------------------------------------------------------");
+        System.out.printf("%-16s %-13s %-16s %-16s %n", "Gym Id", "Name", "Email", "Approved");
+        System.out.println("--------------------------------------------------------");
+
+        for (GymCenter gym : gymDetails) {
+            System.out.printf("%-16s %-16s %-16s %-16s %n",
+                    gym.getId(), gym.getName(), gym.getEmail(), gym.isIs_approved() ? "Yes" : "No");
+        }
+        System.out.println("--------------------------------------------------------");
+    }
+
+    public void viewApprovedGymOwners() {
+        List<GymOwner> gymOwnerDetails = adminOperation.viewApprovedGymOwners();
+
+        System.out.printf("%-19s %-13s %-24s %-17s %n", "Email", "Name", "PAN Number", "Approved");
+        for (GymOwner owner : gymOwnerDetails) {
+            System.out.printf("%-19s %-13s %-24s %-17s %n",
+                    owner.getOwnerEmailAddress(), owner.getOwnerName(), owner.getOwnerPanNum(),
+                    owner.isApproved() ? "Yes" : "No");
+        }
+        System.out.println("**********************************");
+    }
+    
 
     public void AdminMainPage(String username) {
         System.out.println("Welcome " + username + ", Please Choose Your Option");
@@ -95,10 +122,12 @@ public class GymAdminMenu {
         while (!exit) {
             System.out.println("1. View All Pending Gym Owners");
             System.out.println("2. View All Pending Gym Centres");
-            System.out.println("3. Approve Gym Owner");
-            System.out.println("4. Approve Gym Centre");
-            System.out.println("5. Edit Admin Profile");
-            System.out.println("6. Exit");
+            System.out.println("3. View All Approved Gym Owners");
+            System.out.println("4. View All Approved Gym Centres");
+            System.out.println("5. Approve Gym Owner");
+            System.out.println("6. Approve Gym Centre");
+            System.out.println("7. Edit Admin Profile");
+            System.out.println("8. Exit");
             System.out.print("Enter number: ");
 
             int choice = in.nextInt();
@@ -107,10 +136,12 @@ public class GymAdminMenu {
             switch (choice) {
                 case 1 -> viewPendingGymOwners();
                 case 2 -> viewPendingCenters();
-                case 3 -> approveGymOwner();
-                case 4 -> approveGymCentre();
-                case 5 -> editAdminProfile();
-                case 6 -> {
+                case 3 -> viewApprovedGymOwners();
+                case 4 -> viewApprovedCenters();
+                case 5 -> approveGymOwner();
+                case 6 -> approveGymCentre();
+                case 7 -> editAdminProfile();
+                case 8 -> {
                     System.out.println("Exiting...");
                     exit = true;
                 }

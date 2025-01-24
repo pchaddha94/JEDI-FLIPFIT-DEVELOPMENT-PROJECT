@@ -14,6 +14,7 @@ public class FeedbackDAO implements FeedbackDAOInterface {
 
     @Override
     public boolean addFeedback(Feedback feedback) {
+
         try (Connection connection = DB_utils.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(Constants.ADD_FEEDBACK)) {
             preparedStatement.setLong(1, feedback.getUserId());

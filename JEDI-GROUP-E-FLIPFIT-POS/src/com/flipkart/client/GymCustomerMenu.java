@@ -2,6 +2,7 @@ package com.flipkart.client;
 
 import com.flipkart.DAO.GymCustomerDAO;
 import com.flipkart.DAO.GymCustomerDAOInterface;
+import com.flipkart.bean.BookSlot;
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
@@ -24,7 +25,7 @@ public class GymCustomerMenu {
             System.out.println("Welcome " + email);
             System.out.println("Successfully logged in");
             Customer customer = gymCustomerDAO.getCustomerByEmail(email);
-            customerMainPage(customer.getCustomerName());
+            customerMainPage(customer.getCustomerName(),customer.getCustomerId());
         }
         else{
             System.out.println("Invalid username or password");
@@ -51,10 +52,9 @@ public class GymCustomerMenu {
         String address = scanner.next();
 
         Customer customer = customerOperation.createCustomer(username, address,email,phoneNumber,password);
-        customerMainPage(customer.getCustomerName());
     }
 
-    public void customerMainPage(String userName) {
+    public void customerMainPage(String userName,Long customerId) {
         System.out.println("Welcome " + userName + ". Please choose your option: ");
         Customer customer = gymCustomerDAO.getCustomerByEmail(userName);
         while(true){
@@ -75,16 +75,29 @@ public class GymCustomerMenu {
                     System.out.println("Please enter gym centre ID");
                     Long centreId = scanner.nextLong();
                     List<Slot> slots = centreOperation.getAllSlots(centreId);
-                    System.out.println("Available slots:\n1. Slot 1\n2. Slot 2\n3. Slot 3");
+                    slots.forEach(slot -> {
+                        System.out.println("Slot id: "+ slot.getSlotID());
+                        System.out.println("Center id of the slot: "+slot.getCentreId());
+                        System.out.println("Slot timings: "+slot.getSlotTimings());
+                        System.out.println("Price: "+slot.getPrice());
+                        System.out.println("\n");
+                    });
                     break;
                 case 3:
                     System.out.println("Please enter slot Id");
                     Long slotId = scanner.nextLong();
 
-                    customerOperation.bookSlot(customer.getCustomerId(),slotId);
+                    customerOperation.bookSlot(customerId,slotId);
                     break;
                 case 4:
-                    System.out.println(customerOperation.viewAllBooking(1L));
+                    List<BookSlot> bookSlots = customerOperation.viewAllBooking(customerId);
+                    bookSlots.forEach(bookSlot -> {
+                        System.out.println("Booking id: "+ bookSlot.getBookingId());
+                        System.out.println("Slot id: "+ bookSlot.getSlotId());
+                        System.out.println("Booking date: "+ bookSlot.getBookingDate());
+                        System.out.println("Booking status: "+ bookSlot.getBookingStatus());
+                        System.out.println("\n");
+                    });
                     break;
                 case 5:
                     System.out.println("Please enter slot");
@@ -97,11 +110,6 @@ public class GymCustomerMenu {
                     return;
                 case 6:
                 	FeedbackOperation feedbackOperation = new FeedbackOperation();
-                    Scanner scanner = new Scanner(System.in);
-
-                    System.out.println("Enter User ID:");
-                    Long userId = scanner.nextLong();
-
                     System.out.println("Enter Centre ID:");
                     centreId = scanner.nextLong();
 
@@ -112,11 +120,13 @@ public class GymCustomerMenu {
 
                     System.out.println("Enter Rating (1-5):");
                     int rating = scanner.nextInt();
+
+                    scanner.nextLine();
                     
                     if (rating < 1 || rating > 5) {
                         System.out.println("Invalid rating! Please enter a value between 1 and 5.");
                     } else {
-                        feedbackOperation.addFeedback(userId, comments, rating, centreId);
+                        feedbackOperation.addFeedback(customerId, comments, rating, centreId);
                     }
                 default:
                     System.out.println("Invalid option");

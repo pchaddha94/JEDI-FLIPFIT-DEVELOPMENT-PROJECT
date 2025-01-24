@@ -104,12 +104,16 @@ public class GymOwnerMenu {
     			case 2:
     				System.out.println("Enter the Centre id");
     				Long centreId = scanner.nextLong();
-    				System.out.println("Enter Your Email ID");
+					scanner.nextLine();
+    				System.out.println("Enter Your timings in HH:MM format");
     				String slotTimings = scanner.nextLine();
-    				scanner.nextLine();
     				System.out.println("Enter the Price for the slot");
     				String price = scanner.nextLine();
-    				System.out.println("Slot added successfully");
+					Slot slot = new Slot();
+					slot.setCentreId(centreId);
+					slot.setSlotTimings(slotTimings);
+					slot.setPrice(Integer.parseInt(price));
+					gymOwnerOperations.addSlot(slot);
     				break;
     			case 3:
     				System.out.println("Enter the centre id");
