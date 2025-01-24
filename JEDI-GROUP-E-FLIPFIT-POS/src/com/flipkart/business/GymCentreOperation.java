@@ -14,6 +14,7 @@ import com.flipkart.bean.Slot;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class GymCentreOperation {
     
@@ -122,12 +123,8 @@ public class GymCentreOperation {
     public List<GymCenter> getAllGymCentersByGymOwnerId(Long gymOwnerId) {
         System.out.println("Getting all the gym centers by gym owner id");
         List<GymCenter> gymCenters = getAllGymCenters();
-        List<GymCenter> gymCentersByGymOwnerId = new ArrayList<>();
-        for(GymCenter gymCenter : gymCenters){
-            if(Objects.equals(gymCenter.getGymOwnerId(), gymOwnerId)){
-                gymCentersByGymOwnerId.add(gymCenter);
-            }
-        }
-        return gymCentersByGymOwnerId;
+        return gymCenters.stream()
+                         .filter(gymCenter -> Objects.equals(gymCenter.getGymOwnerId(), gymOwnerId))
+                         .collect(Collectors.toList());
     }
 }
