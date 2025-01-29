@@ -63,4 +63,27 @@ public class BookSlotDAO implements BookSlotDAOInterface{
         }
         System.out.println("Booking slot failed");
     }
+
+	@Override
+	public void deleteCustomerBooking(Long customerId, Long slotId) {
+		// TODO Auto-generated method stub
+		try {
+			Boolean isCancelled = slotsDAO.increaseSeat(slotId);
+			if(Boolean.FALSE.equals(isCancelled)){
+                System.out.println("Cancellation failed. Your booking was not cancelled.");
+                return ;
+            }
+			Connection connection = DB_utils.getConnection();
+            PreparedStatement stmt = connection.prepareStatement(Constants.DELETE_SLOT_BOOKING);
+            stmt.setLong(1, customerId);
+            stmt.setLong(2, slotId);
+            stmt.executeUpdate();
+            stmt.close();
+			System.out.println("Your booking is Cancelled");
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
 }

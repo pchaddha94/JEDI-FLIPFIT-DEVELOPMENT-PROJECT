@@ -1,6 +1,9 @@
 package com.flipkart.client;
 
 import com.flipkart.DAO.AdminDao;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
 import com.flipkart.DAO.AdminDaoInterface;
 import com.flipkart.business.AdminOperation;
 import com.flipkart.bean.GymAdmin;
@@ -115,6 +118,11 @@ public class GymAdminMenu {
     
 
     public void AdminMainPage(String username) {
+    	LocalDateTime myObj = LocalDateTime.now();
+    	DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        String formattedDate = myObj.format(myFormatObj);
+    	System.out.println("You logged in at: "+formattedDate);
         System.out.println("Welcome " + username + ", Please Choose Your Option");
         boolean exit = false;
 

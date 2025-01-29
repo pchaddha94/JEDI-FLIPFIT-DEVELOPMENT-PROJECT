@@ -18,10 +18,12 @@ public class Constants {
 	public static final String FETCH_ALL_BOOKEDSLOTS = "SELECT * FROM BookedSlot WHERE customerEmail=? and isActive=?";
 	public static final String CHECK_SLOT_ALREADY_BOOKED = "SELECT * FROM BookedSlot WHERE slotId=? and customerEmail=? and date=?";
 	public static final String CANCEL_BOOKING = "UPDATE BookedSlot SET isActive = ? where id = ? and customerEmail = ?";
+	public static final String INCREASE_SEAT = "UPDATE jedi_flipfit_mysql.slots SET available_seats=available_seats+1 where slot_id=?;";
 	public static final String DECREASE_SEAT = "UPDATE jedi_flipfit_mysql.slots SET available_seats=available_seats-1 where slot_id=?;";
 	public static final String GET_SLOT_BY_ID = "SELECT * FROM jedi_flipfit_mysql.slots WHERE slot_id=?";
 	
-	public static final String FETCH_PENDING_GYM_CENTERS = "SELECT * FROM gym_center WHERE is_approved = 0";
+	
+	public static final String FETCH_PENDING_GYM_CENTERS = "SELECT * FROM gym_center WHERE is_approved = 0;";
 	
 	public static final String FETCH_PENDING_GYM_OWNERS = "SELECT * FROM gym_owner WHERE is_approved = 0";
 	
@@ -41,6 +43,7 @@ public class Constants {
 	public static final String FETCH_CUSTOMER_BY_EMAIL = "SELECT * from jedi_flipfit_mysql.Customer where customer_email_id=?";
 	public static final String FETCH_BOOKINGS_BY_CUSTOMER_ID = "SELECT * from jedi_flipfit_mysql.book_slot where customer_id=?;";
 	public static final String ADD_SLOT_BOOKING = "INSERT INTO jedi_flipfit_mysql.book_slot(customer_id,slot_id,booking_date,booking_status) VALUES(?,?,?,?)";
+	public static final String DELETE_SLOT_BOOKING = "DELETE FROM jedi_flipfit_mysql.book_slot WHERE customer_id = ? AND slot_id = ?;";
 	public static final String FETCH_ALL_GYM_CENTERS = "SELECT * from jedi_flipfit_mysql.gym_center WHERE is_approved=1";
 	public static final String INSERT_USER_ROLE = "INSERT INTO jedi_flipfit_mysql.user_role (user_id,user_role,user_email) VALUES (?,?,?)";
 	public static final String ADD_ADMIN = "INSERT INTO jedi_flipfit_mysql.gym_admin (admin_name, admin_email_id, admin_phone_no, admin_password) VALUES (?,?,?,?)";

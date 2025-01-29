@@ -81,9 +81,10 @@ public class CustomerOperations {
      * @param userName Name of the customer
      * @param slot Slot to be canceled
      */
-    public void cancelBookedSlot(String userName, String slot) {
-        System.out.println("Cancel Slot");
-    }
+    public void cancelBookedSlot(Long customerId, Long slotId) {
+        bookSlotDAO.deleteCustomerBooking(customerId, slotId);		
+	}
+    
 
     /**
      * Updates an existing booked slot.
@@ -122,4 +123,6 @@ public class CustomerOperations {
     public List<GymCenter> viewAllGymCenter() {
         return null;
     }
+
+	
 }

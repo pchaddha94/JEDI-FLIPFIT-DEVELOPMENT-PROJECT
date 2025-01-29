@@ -63,6 +63,11 @@ public class GymOwnerMenu {
         GymOwner gymOwner=gymOwnerOperations.createGymOwner( userName, email,password, phone, panNumber, true, address);
     }
     public void gymOwnerClientMainPage(String gymOwnerName, Long ownerId) {
+    	LocalDateTime myObj = LocalDateTime.now();
+    	DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        String formattedDate = myObj.format(myFormatObj);
+    	System.out.println("You logged in at: "+formattedDate);
     	while(true) {
     		System.out.println("" +
 					"0. Get all gym center\n" +

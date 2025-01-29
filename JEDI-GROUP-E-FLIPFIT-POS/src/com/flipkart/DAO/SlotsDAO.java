@@ -101,4 +101,28 @@ public class SlotsDAO implements SlotsDAOInterface {
         }
         return null;
     }
+
+	@Override
+	public Boolean increaseSeat(Long slotId) {
+		// TODO Auto-generated method stub
+		try{
+            Slot slot = getSlotById(slotId);
+            if(Objects.isNull(slot)){
+                System.out.println("Slot not found");
+                return false;
+            }
+            if(slot.getAvailableSeats()==0){
+                System.out.println("Slot has no available seats");
+                return false;
+            }
+            Connection connection = DB_utils.getConnection();
+            PreparedStatement statement = connection.prepareStatement(Constants.INCREASE_SEAT);
+            statement.setLong(1, slotId);
+            statement.executeUpdate();
+            return true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+	}
 }

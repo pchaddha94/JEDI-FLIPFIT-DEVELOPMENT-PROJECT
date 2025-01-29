@@ -9,4 +9,6 @@ public interface BookSlotDAOInterface {
     public List<BookSlot> getCustomerBookings(Long customerId);
 
     public void addCustomerBooking(BookSlot bookSlot);
+
+	public void deleteCustomerBooking(Long customerId, Long slotId);
 }

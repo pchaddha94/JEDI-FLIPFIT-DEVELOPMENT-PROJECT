@@ -13,4 +13,6 @@ public interface SlotsDAOInterface {
     public Boolean decreaseSeat(Long slotId);
 
     public Slot getSlotById(Long slotId);
+
+	public Boolean increaseSeat(Long slotId);
 }
