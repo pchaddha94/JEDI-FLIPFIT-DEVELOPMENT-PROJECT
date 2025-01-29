@@ -112,7 +112,7 @@ public class CustomerOperations {
             throw new UserNotFoundException();
         }
 
-        return Objects.isNull(customer.getPassword()) && !Objects.equals(customer.getPassword(), password);
+        return Objects.nonNull(customer.getPassword()) && Objects.equals(customer.getPassword(), password);
     }
 
     /**

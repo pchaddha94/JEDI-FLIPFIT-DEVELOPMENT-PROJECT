@@ -103,7 +103,7 @@ public class AdminOperation {
         if(Objects.isNull(gymAdmin)) {
             throw new UserNotFoundException();
         }
-        return !Objects.isNull(gymAdmin.getPassword()) && !Objects.equals(gymAdmin.getPassword(), password);
+        return Objects.nonNull(gymAdmin.getPassword()) && Objects.equals(gymAdmin.getPassword(), password);
     }
     
     /**

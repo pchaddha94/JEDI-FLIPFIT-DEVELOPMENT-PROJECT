@@ -184,6 +184,7 @@ public class AdminDao implements AdminDaoInterface {
     @Override
     public GymAdmin getAdminByEmail(String email) {
         try{
+            connection = DB_utils.getConnection();
             statement = connection.prepareStatement(Constants.GET_ADMIN_BY_EMAIL);
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
