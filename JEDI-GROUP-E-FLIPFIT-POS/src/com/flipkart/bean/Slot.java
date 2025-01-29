@@ -6,6 +6,7 @@ public class Slot {
 	private String slotTimings ; // 24 hr format: Eg : "16:00". Will be start timing
 	private int price;
 	private Long centreId;
+	private Long availableSeats;
 	private WaitingList waitList;
 	//Waiting list to be added
 	
@@ -40,5 +41,13 @@ public class Slot {
 
 	public void setCentreId(Long centreId) {
 		this.centreId = centreId;
+	}
+
+	public Long getAvailableSeats() {
+		return availableSeats;
+	}
+
+	public void setAvailableSeats(Long availableSeats) {
+		this.availableSeats = availableSeats;
 	}
 }

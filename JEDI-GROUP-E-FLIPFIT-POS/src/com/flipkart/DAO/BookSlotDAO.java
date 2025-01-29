@@ -14,6 +14,8 @@ import java.util.List;
 
 public class BookSlotDAO implements BookSlotDAOInterface{
 
+    private SlotsDAOInterface slotsDAO = new SlotsDAO();
+
     @Override
     public List<BookSlot> getCustomerBookings(Long id){
         try{
@@ -41,6 +43,11 @@ public class BookSlotDAO implements BookSlotDAOInterface{
     @Override
     public void addCustomerBooking(BookSlot bookSlot) {
         try{
+            Boolean flag = slotsDAO.decreaseSeat(bookSlot.getSlotId());
+            if(Boolean.FALSE.equals(flag)){
+                System.out.println("Booking failed. No seats available for this slot.");
+                return ;
+            }
             Connection connection = DB_utils.getConnection();
             PreparedStatement stmt = connection.prepareStatement(Constants.ADD_SLOT_BOOKING);
             stmt.setLong(1, bookSlot.getCustomerId());

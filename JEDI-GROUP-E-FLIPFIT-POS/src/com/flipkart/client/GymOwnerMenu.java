@@ -79,6 +79,7 @@ public class GymOwnerMenu {
 				case 0:
 					List<GymCenter> gymCenters = gymCentreOperation.getAllGymCentersByGymOwnerId(ownerId);
 					gymCenters.forEach(gymCenter -> {
+						System.out.println("Gym center Id: " + gymCenter.getId());
 						System.out.println("Gym Center name: "+ gymCenter.getName());
 						System.out.println("Gym email id: "+ gymCenter.getEmail());
 						System.out.print("Approval status: "+gymCenter.isIs_approved());
@@ -116,10 +117,15 @@ public class GymOwnerMenu {
     				String slotTimings = scanner.nextLine();
     				System.out.println("Enter the Price for the slot");
     				String price = scanner.nextLine();
+					System.out.println("Enter available seats");
+					Long availableSlots = scanner.nextLong();
+					scanner.nextLine();
+
 					Slot slot = new Slot();
 					slot.setCentreId(centreId);
 					slot.setSlotTimings(slotTimings);
 					slot.setPrice(Integer.parseInt(price));
+					slot.setAvailableSeats(availableSlots);
 					gymOwnerOperations.addSlot(slot);
 					System.out.println("Slot added successfully\n");
     				break;

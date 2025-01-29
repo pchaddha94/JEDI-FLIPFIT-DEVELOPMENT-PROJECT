@@ -84,13 +84,14 @@ public class GymCustomerMenu {
                         System.out.println("Center id of the slot: "+slot.getCentreId());
                         System.out.println("Slot timings: "+slot.getSlotTimings());
                         System.out.println("Price: "+slot.getPrice());
+                        System.out.println("Available seats: "+slot.getAvailableSeats());
                         System.out.println("\n");
                     });
                     break;
                 case 3:
                     System.out.println("Please enter slot Id");
                     Long slotId = scanner.nextLong();
-
+                    scanner.nextLine();
                     customerOperation.bookSlot(customerId,slotId);
                     System.out.println("yayy you slot is booked !");
                     break;
